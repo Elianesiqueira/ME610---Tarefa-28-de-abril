@@ -1,0 +1,136 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Exemplo 09: Espaçamento e unidade de medidas
+% ultima atualizacao: 14/05/2004 por Sadao Massago
+% http:/www.dm.ufscar.br/~sadao
+%----------------------------------------------------
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[brazil]{babel} % em portugues brasileiro
+\usepackage[latin1]{inputenc} % acentuação direta
+% T1 não é aceito no PCTeX 4.0 ou anterior. Neste caso, comente
+\usepackage[T1]{fontenc} % codificação da fonte em 8-bits
+% regra de hifenização das palavras nao acentuadas: nao requer \usepackage[T1]{fontenc}
+\hyphenation{li-vro tes-te cha-ve bi-blio-te-ca}
+% regra de hifenização das palavras acentuadas: requer \usepackage[T1]{fontenc}
+\hyphenation{co-men-tá-rio re-fe-rên-cia}
+
+\begin{document} % inicio do documento
+
+O \LaTeX{} pode inserir espaçamentos extras, tanto na direção horizontal 
+como vertical. Além disso, é possível inserir ``espaços ajustáveis'' 
+para ``empurrar'' o conteúdo.
+
+Espaço de uma letra é inserido pelo $\backslash$ seguido de espaço e espaço 
+que é tratado como letra (que não pode ser separado) é inserido pelo $\sim$.
+
+O espaço extra entre linhas é inserido pelos comandos \verb|\smallskip|, \verb|\mdskip| e \verb|\bigskip|.
+
+Quando precisa de um espaçamento maior, poderá usar o comando apropriado em 
+vez de ficar inserindo monte espaço, ou parágrafo.
+
+O comando \verb|\hspace{medida}| insere um espaço horizontal, 
+desde que não seja no local proibida ou desnecessária.
+
+Ex.: o espaço de 2cm\hspace{2cm}foi inserido.
+
+Para que o espaço seja relativo ao tamanho da letra, poderá usar a medida
+\texttt{em} que equivale a largura da letra ``M'' maiusculo.
+
+Ex.: espaço de 10 letras\hspace{10em} foi inserido.
+
+Para que o espaço seja inserido mesmo no local inapropriado ou considerada
+desnecessário, basta colocar ``*'' no comando.
+
+Ex.:
+
+\hspace*{2cm}foi inserido um o espaço de 2cm.
+
+Para o espaçamento horizontal, usa-se o \verb|vspace{}| e 
+\verb|\vspace*{}| da forma similar.
+
+Ex.:
+um espaço vertical de 2cm \\
+\vspace*{2cm}
+que é inserido mesmo no começo da página 
+(local desaconselhado será ignorado pelo \verb|\vspace{2cm}|
+mas não pelo \verb|\vspace*{2cm}|).
+
+Ex.: espaço vertical de 10 letras \\
+\vspace{5em}
+
+foi inserido.
+
+Unidades mais usadas são:
+
+\ \\
+% \texttt{sp} (scaled point - menor unidade do TeX) = $\frac{1}{65536}$pt \\
+\texttt{pt} (point - unidade gráfica) = $\frac{1}{72.27}$in (polegada) ou $0.351$mm \\
+% \texttt{bp} (Big point ou PostScript ponitn) = $\frac{1}{72}$in (polegada) \\
+% \texttt{dd} (Didôt point - unidade gráfica) = $\frac{1}{72}$ French inch = $0.376$mm \\
+\texttt{mm} (milimetro) = $2.845$pt \\
+\texttt{pc} (pica) = $12$pt ou $4.218$mm \\
+% \texttt{cc} (Cicero) = $12$dd ou $4.531$mm \\
+\texttt{cm} (centímetro) = $2.371$pc \\
+\texttt{in} (polegada) = $25.4$mm ou $72.27$pt ou $6.022$pc \\
+\texttt{ex} = altura da letra ``x'' minusculo da fonte corrente \\
+\texttt{em} = largura da letra ``M'' maiusculo da fonte corrente \\
+\texttt{mu} (math unit) = $\frac{1}{18}$em \\
+\verb|\stretch{peso}| = espaço esticável com eso especificado.
+
+\
+
+{\bfseries espaço ajustável:}
+
+O espaço ajustável é aquele que ajusta de acordo com o espaço disponível, bastante usado para ``enpurrar'' conteúdo para dois lados.
+
+\verb|\hfill| equivale a \verb|\hspace{\stretch{1}| \\
+\verb|\hrulefill| similar a \verb|\hfil|, mas preenche com linha \\
+\verb|\dotfill| similar a \verb|\hfill|, mas preenche com linha pontilhada
+\verb|\vfill| equivale a \verb|\vspace{\stretch{1}|
+
+Ex.: \\
+Palavra a esquerda \hfill e a direita \\
+Palavra a esquerda \hrulefill e a direita \\
+Palavra a esquerda \dotfill e a direita \\
+
+Para inserir espaço esticável com peso, poderá usar vários espaços esticáveis.
+
+Ex.: espaços de peso 1, 2 e 3: \\
+primeiro\hfill segundo\hrulefill\hrulefill terceiro\dotfill\dotfill\dotfill quarto
+
+Para espaços com pesos quaisquer, é útil usar o espaço \verb|\texttt{stretch}| 
+que aceita qualquer peso, em combinação com o comandos \texttt{hspace} e \texttt{vspace}.
+
+Ex.: espaços de peso 1, 2 e 1.5: \\
+primeiro\hspace{\stretch{1}}segundo\hspace{\stretch{2}}terceiro\hspace{\stretch{1.5}}quarto
+
+Exitem três inserção de espaços pré-definidos de tamanho fixo: \\
+\verb|\quad| insere espaço de $1$em = $18$mu \\
+\verb|\qquad| insere espaço de $2$\texttt{quad}=$2$em \\
+\verb|\enspace| insere espaço de $\frac{1}{2}$\texttt{quad} \\
+
+Ex.: espaço extra de 2em\qquad inserido. \\
+    Espaço extra de 1em na fórmula: $x^2\quad x^3$
+    
+Na fórmula matemática, pode precisar de ajustes refinados e precisos de 
+espaços extras, menores que oferecidos pelos três comandos acima. 
+Para tanto, existem seguintes comandos de espaçamento 
+(eles funcionam somente no modo matemático): 
+
+\verb|\,| insere espaço de $\frac{3}{18}$\texttt{quad} = $3$mu 
+
+\verb|\:| insere espaço de $\frac{4}{18}$\texttt{quad} = $4$mu 
+
+\verb|\;| insere espaço de $\frac{5}{18}$\texttt{quad} = $3$mu 
+
+\verb|\,| insere espaço de $\frac{3}{18}$\texttt{quad} = $3$mu 
+
+\verb|\!| insere espaço de $\frac{-3}{18}$\texttt{quad} = $-3$mu (similar a \verb|\hspace{-3mu}|)
+
+Ex.: $x \in \mathrm{I\!R}, \enspace x>0$.
+
+Nota: o R construido acima é apenas como ilustração. Deverá usar 
+a fonte apropriada tal como \verb+\mathbb+ do AMS.
+
+\end{document} % final do documento
+

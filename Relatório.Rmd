@@ -1,0 +1,109 @@
+---
+title: ""
+geometry: textwidth=18cm,textheight=21cm
+setspace: doublespacing
+lang: pt-br
+header-includes:
+- \usepackage{setspace} #pacote para espaço duplo
+- \usepackage{indentfirst} #pacote para identação
+- \usepackage[utf8]{inputenc}
+- \usepackage{mathptmx}
+- \usepackage{enumerate}
+- \usepackage{url} #pacote para iserir link
+- \usepackage{lipsum}
+- \usepackage{multirow} #pacote para mesclar linhas de tabela
+output:
+  pdf_document:
+  html_document: default
+  fig_caption: yes
+  mainfont: Times New Roman
+  
+fontsize: 10pt
+
+---
+
+\begin{titlepage}
+\begin{center}
+\thispagestyle{empty}
+\begin{figure}[!htb]
+\begin{center}
+\begin{minipage}[b]{0.5\linewidth}
+\begin{center}
+\includegraphics[width=100pt,height=150pt]{logo/logoimeccunicamp.png}
+\end{center}
+\end{minipage}
+\begin{minipage}[b]{0.7\linewidth}
+\begin{center}
+\vspace*{1cm}
+ {\large \bf Universidade Estadual de Campinas\\[5pt]
+Instituto de Matemática, Estatística e Computação Cientifica\\[3pt]
+Departamento de Estatística}
+\end{center}
+\end{minipage}
+\end{center}
+\end{figure}
+\vspace*{\stretch{1}}
+\begin{center}
+\vspace*{5cm}
+{\huge \bf Relatório \\[7pt]
+Trabalho de ME610}
+\end{center}
+\vspace*{\stretch{1}}
+\begin{center}
+\vspace*{4cm}
+{\Large \bf Eliane Ramos de Siqueira  RA:155233 \\
+Guilherme Pazian  RA:160323 \break
+}\\[3pt]
+{\large \bf Professor: Maurício Zevallos}\\[5pt]
+\end{center}
+\vspace*{\stretch{1}}
+\centerline{\bf Campinas-SP, 28 de Abril de 2017}
+\vspace*{\stretch{1}}
+\end{center}
+\end{titlepage}
+
+\onehalfspacing
+\newpage
+
+```{r pacotes utilizados, echo=FALSE, eval=FALSE, warning=FALSE}
+#todos os pacotes utilizados estão aqui
+library(ggplot2)
+library(knitr)
+library(dplyr)
+
+```
+
+
+\begin{enumerate}
+\item Introdução
+\end{enumerate}
+\vspace{0.3cm}
+\setlength{\parindent}{3em}
+
+O objetivo deste trabalho é verificar esta opinião através da análise do peso da criança ao nascer
+
+Os dados utilizados foram coletados através de entrevistas com as mães durante a gravidez e correspondem a um ano de estudo. Eles incluem 1236 nascimentos onde a criança sobreviveu pelo menos 28 dias. Além do peso das crianças, foram coletadas informações de outras variáveis que influenciam no peso das crianças.
+
+Para este estudo estamos considerando como variável resposta, o peso da criança ao nascer.
+
+```{r leitura dos dados, echo=FALSE, warning=FALSE}
+#setwd(choose.dir())
+dados=read.table("dados.txt", header = T)
+```
+
+```{r, echo=FALSE}
+#alterando nomes das variáveis, usando uma tabela feita no excel
+descricao<-read.csv("dados.csv", header = T, sep = ";")
+descricao<-descricao[,1:2]
+names(descricao)<-c("Original", "Nova")
+
+names(dados)<-descricao$Nova #alterando os nomes das variáveis
+
+```
+
+```{r}
+#convertendo unidade de medidas 
+#1 onça equivale à 0,0283 quilos
+
+```
+

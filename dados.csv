@@ -1,0 +1,24 @@
+Vari†vel_Original;Vari†vel;Significado;
+ID;ID;Identificaá∆o;
+Pluralty;Qtd_feto;Feto £nico;
+Outcome;Vivo;Nascido vivo que sobreviveu pelo menos 28 dias;1: Vivo
+Date;Data_nasc;Data de Nascimento;1096:  Janeiro de 1961
+Gestation;Tempo_gestacao;Duraá∆o da gestaá∆o;Em dias
+Sex;Sexo;Sexo do bebà;1: Masculino, 2: Feminino e 9:Sem informaá∆o 
+Wt;Peso;Peso ao nascer;Em onáas
+Parity;Numero_gestacoes;N£mero de gestaá‰es anteriores;Incluindo mortes fetais e nascimentos
+Race;Cor_mae;Raáa da m∆e;0-5: Branca, 6:Mex, 7:Negro, 8: Asi†tica, 9: Mestiáa, 99: Sem informaá∆o
+Age;Idade_mae;Idade;idade da m∆e em anos de tÇrmino da gravidez
+Ed;Educacao_mae;Educaá∆o materna;
+Ht;Altura_mae;Altura da m∆e;
+Wt;Peso_mae;Peso da m∆e;
+Drace;Cor_pai;Raáa do pai;
+Dage;Idade_pai;Idade do pai;
+Ded;Educacao_pai;Educaá∆o do pai;
+Dht;Altura_pai;Altura do pai;
+Dwt;Peso_pai;Peso do pai;
+Marrital;Estado_civil;Casados;1: Casada, 2:Legalmente Separado, 3:Divorciado, 4: , 5:nunca casou
+Inc;Rendimento_anual;Rendimento anual da familia;
+Smoke;Fuma;A m∆e fuma?;
+Time;Tempo_sem_fumar;Se a m∆e parou de fumar, h† quanto tempo?;
+Number;Numero_cigarros;Numero de cigarros fumados por dia;

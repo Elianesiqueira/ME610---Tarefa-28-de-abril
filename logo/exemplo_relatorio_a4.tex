@@ -1,0 +1,129 @@
+%% Modelo criado por R\'egis (c) 2011
+%% http://latexbr.blogspot.com
+%% twitter: @rg3915
+%% Todos os caracteres foram convertidos para codigos TeX
+%% para que possa ser lido em qualquer plataforma.
+\documentclass[a4paper]{report} %padrao letterpaper, 10pt
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsfonts,amssymb,graphicx,enumerate}
+\usepackage[centertags]{amsmath}
+% Configuracoes de pagina
+\usepackage[lmargin=3cm,rmargin=3cm,tmargin=3cm,bmargin=3cm]{geometry}
+% Layout da pagina
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=SinglePage, % ou TwoPageLeft
+    colorlinks=true,
+    pdftitle={Exemplo de Relat\'orio},
+    pdfauthor={R\'egis da Silva}}
+
+%*******************************************************
+% Definindo novos teoremas
+\usepackage{theorem}
+\newtheorem{teo}{Teorema}[chapter] % usa contador associado ao capitulo
+\newtheorem{cor}[teo]{Corol\'ario} % usa mesmo contador do teorema
+\newtheorem{lem}[teo]{Lema} % usa mesmo contador do teorema
+\newtheorem{prop}[teo]{Proposi\c{c}\~ao} % usa mesmo contador do teorema
+\newtheorem{axi}[teo]{Axioma} % usa mesmo contador do teorema
+\theorembodyfont{\normalfont\upshape} % agora, nao eh mais fonte italico
+\newtheorem{defn}[teo]{Defini\c{c}\~ao} % usa mesmo contador do teorema
+\newtheorem{ex}{Exemplo}[chapter] % usa contador associado ao capitulo
+\newtheorem{exerc}{Exercício}[chapter] % usa contador associado ao capitulo
+
+% Ambiente para demonstracao que coloca quadrado no final, usando \rule
+% Nota: \rule{largura}{altura} produz um retagulo preto.
+\newenvironment{dem}[1][Demonstra\c c\~ao]{\textbf{#1:}\
+
+}  {\hfill\rule{1ex}{1ex}}
+%*******************************************************
+% Definindo novos comandos
+\providecommand{\sin}{} \renewcommand{\sin}{\hspace{2pt}\textrm{sen}}
+\newcommand{\R}{\mathbb{R}} %simbolos de numeros reais
+%*******************************************************
+\title{Exemplo de Relat\'orio no \LaTeX}
+\author{R\'egis da Silva}
+\date{2011}    %para ocultar a data digite: \date{ }
+%*******************************************************
+\begin{document}    %Inicio do documento
+\maketitle  %cria o titulo na capa
+
+\tableofcontents %Sumario
+%-------------------------------------------------------
+\chapter{Primeiro cap\'itulo}
+\label{chap_primeiro} %rotulo que pode ser usado em referencia cruzada
+
+\section{Primeira Se\c c\~ao}
+\label{sec_primeiro}
+
+% ambiente definido no teorema. O que esta entre [] eh opcional
+\begin{defn}[TFC]
+Seja $f:[a,b] \to \R$ uma fun\c c\~ao integr\'avel e $F$ sua primitiva. Ent\~ao
+
+\[
+  \int_a^b {f(x)dx}  = F(b) - F(a)
+\]
+\end{defn}
+
+Lista enumerada:
+
+\begin{enumerate}[a)]
+ \item primeiro item;
+ \item segundo item;
+ \item terceiro item.
+\end{enumerate}
+
+Lista n\~ao enumerada:
+
+\begin{itemize}
+ \item primeiro item;
+ \item segundo item;
+ \item terceiro item.
+\end{itemize}
+
+%-------------------------------------------------------
+\chapter{Segundo cap\'itulo}
+\label{chap_segundo}
+
+\section{Segunda Se\c c\~ao}
+\label{sec_segundo}
+
+\subsection{Subse\c c\~ao}
+\label{subsec_nome}
+
+\begin{teo}
+Exemplo de teorema.
+\end{teo}
+
+\begin{ex}
+Exemplo de equa\c c\~ao matem\'atica com m\'ultiplas linhas.
+
+\[
+\begin{gathered}
+  5x - 10 = 0 \hfill \\
+  5x = 10 \hfill \\
+  x = 2 \hfill \\ 
+\end{gathered} 
+\]
+
+Para equa\c c\~oes mais complexas leia \href{http://ctan.tche.br/help/Catalogue/entries/voss-mathmode.html}{mathmode.pdf} e \href{http://latexbr.blogspot.com/2010/11/editor-de-equacoes-online.html}{Equa\c c\~oes online}.
+\end{ex}
+
+% Referencias bibliograficas
+\begin{thebibliography}{99}
+\bibitem{Stewart} STEWART, James. {\sl C\'alculo.} Vol. 1. S\~ao Paulo: Pioneira, 2006.
+
+\bibitem{Oetiker}
+OETIKER, Tobias. Et. Al. {\sl Introdu\c c\~ao ao {\LaTeXe}.}
+\url{http://mirrors.ctan.org/info/lshort/portuguese-BR/lshortBR.pdf},2001.
+
+\bibitem{Tantau}
+TANTAU, Till. {\sl The TikZ and PGF Packages.}
+\url{http://ctan.tche.br/graphics/pgf/base/doc/generic/pgf/pgfmanual.pdf}, 2010.
+
+\bibitem{LaTeX}
+\url{http://latexbr.blogspot.com}
+\end{thebibliography}
+
+\addcontentsline{toc}{chapter}{Refer\^encias Bibliogr\'aficas}
+
+\end{document}  %Fim do documento
