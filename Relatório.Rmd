@@ -36,8 +36,8 @@ fontsize: 10pt
 \begin{center}
 \vspace*{1cm}
  {\large \bf Universidade Estadual de Campinas\\[5pt]
-Instituto de Matemática, Estat�?stica e Computação Cientifica\\[3pt]
-Departamento de Estat�?stica}
+Instituto de Matemática, Estat??stica e Computação Cientifica\\[3pt]
+Departamento de Estat??stica}
 \end{center}
 \end{minipage}
 \end{center}
@@ -54,7 +54,7 @@ Trabalho de ME610}
 {\Large \bf Eliane Ramos de Siqueira  RA:155233 \\
 Guilherme Pazian  RA:160323 \break
 }\\[3pt]
-{\large \bf Professor: Maur�?cio Zevallos}\\[5pt]
+{\large \bf Professor: Maur??cio Zevallos}\\[5pt]
 \end{center}
 \vspace*{\stretch{1}}
 \centerline{\bf Campinas-SP, 28 de Abril de 2017}
@@ -65,7 +65,7 @@ Guilherme Pazian  RA:160323 \break
 \onehalfspacing
 \newpage
 
-```{r pacotes utilizados, echo=FALSE, eval=FALSE, warning=FALSE}
+```{r pacotes utilizados, echo=FALSE, eval=TRUE, warning=FALSE}
 #todos os pacotes utilizados estão aqui
 library(ggplot2)
 library(knitr)
@@ -111,7 +111,7 @@ dados<-mutate(dados, Peso_kg=Peso*0.0283)
 
 ```
 
-Exclu�?mos as váriaveis: Sexo (apenas masculino), Qtd_feto (apenas 5) e Vivo (apenas 1).
+Exclu??mos as váriaveis: Sexo (apenas masculino), Qtd_feto (apenas 5) e Vivo (apenas 1).
 
 Na variavel Cor_mae, temos uma observação com valor desconhecido (99)
 Na variavel Idade_mae temos duas observações desconhecidas (99)
@@ -149,4 +149,17 @@ dados=filter(dados,Numero_cigarros!='98')
 
 ```
 
- 
+
+```{r}
+boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg, fill=Cor_mae))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_mae
+```
+```{r}
+boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg, fill=Educacao_mae))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
+boxplot_Educacao_mae
+```
+
+```{r}
+boxplot_Educacao_pai <- ggplot(data = dados,aes(x=Educacao_pai, y=Peso_kg, fill=Educacao_pai))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação do pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(6)","HS unclear(7)"))
+boxplot_Educacao_pai
+```
