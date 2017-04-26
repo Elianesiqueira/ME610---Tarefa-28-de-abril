@@ -173,7 +173,9 @@ Variáveis disponiveis ainda:
 #Peso da criança
 
 library(dplyr)
-dados<-mutate(dados, Peso_kg=Peso*0.0283)
+dados<-mutate(dados, Peso_kg=Peso*0.0283495)
+dados <- mutate(dados,Peso_mae_kg = Peso_mae*0.453592)
+dados<- mutate(dados,Altura_mae_cm = Altura_mae*2.54)
 
 ```
 
@@ -196,7 +198,7 @@ kable(freq_fuma)
 **Grafico de Dispersão**
 
 ```{r}
-dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_pesomae
 ```
@@ -213,7 +215,7 @@ boxplot_Cor_mae
 w
 ```{r, echo=FALSE, warning=FALSE}
 #boxplot do peso por educacao_mae
-boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg, fill=Educacao_mae))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
+boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg, fill=Educacao_mae))+geom_boxplot(aes(group=as.factor(Educacao_mae)),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
 boxplot_Educacao_mae
 ```
 
@@ -223,3 +225,8 @@ boxplot_Educacao_pai <- ggplot(data = dados,aes(x=Educacao_pai, y=Peso_kg, fill=
 boxplot_Educacao_pai
 ```
 
+```{r,echo=FALSE, warning=FALSE}
+#boxplot do peso por educacao_pai
+boxplot_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg, fill=Estado_civil))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebê por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6),labels=c("?","Married","Legally Separated","Divorced","Widowed","Never Married"))
+boxplot_Estado_civil
+```
