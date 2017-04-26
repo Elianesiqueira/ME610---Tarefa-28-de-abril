@@ -36,8 +36,8 @@ fontsize: 10pt
 \begin{center}
 \vspace*{1cm}
  {\large \bf Universidade Estadual de Campinas\\[5pt]
-Instituto de Matemática, Estat??stica e Computação Cientifica\\[3pt]
-Departamento de Estat??stica}
+Instituto de Matemática, Estatística e Computação Cientifica\\[3pt]
+Departamento de Estatística}
 \end{center}
 \end{minipage}
 \end{center}
@@ -54,7 +54,7 @@ Trabalho de ME610}
 {\Large \bf Eliane Ramos de Siqueira  RA:155233 \\
 Guilherme Pazian  RA:160323 \break
 }\\[3pt]
-{\large \bf Professor: Maur??cio Zevallos}\\[5pt]
+{\large \bf Professor: Maurício Zevallos}\\[5pt]
 \end{center}
 \vspace*{\stretch{1}}
 \centerline{\bf Campinas-SP, 28 de Abril de 2017}
@@ -70,7 +70,7 @@ Guilherme Pazian  RA:160323 \break
 library(ggplot2)
 library(knitr)
 library(dplyr)
-
+library(xtable)
 ```
 
 
@@ -91,7 +91,7 @@ Para este estudo estamos considerando como variável resposta, o peso da crianç
 dados=read.table("dados.txt", header = T)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 #alterando nomes das variáveis, usando uma tabela feita no excel
 descricao<-read.csv("dados.csv", header = T, sep = ";")
 descricao<-descricao[,1:2]
@@ -101,39 +101,33 @@ names(dados)<-descricao$Nova #alterando os nomes das variáveis
 
 ```
 
-```{r, echo=FALSE, warning=FALSE}
-#convertendo unidade de medidas 
-#1 onça equivale à 0,0283 quilos
-#Peso da criança
-
-library(dplyr)
-dados<-mutate(dados, Peso_kg=Peso*0.0283)
-
-```
+#Limpando os dados
 
 Excluímos as váriaveis: Sexo (apenas masculino), Qtd_feto (apenas 5) e Vivo (apenas 1).
 
-Na variavel Cor_mae, temos uma observação com valor desconhecido (99)
-Na variavel Idade_mae temos duas observações desconhecidas (99)
-Na variavel Educacao_mae temos uma observação desconhecida (9)
-Na variavel Altura_mae temos 22 observações desconhecidas (99)
-Na variavel Peso_mae temos 36 observações desconhecidas (999)
-Na variavel Cor_pai, temos 5 observações com valor desconhecido (99)
-Na variavel Idade_pai, temos 7 observações com valor desconhecido (99)
-Na variavel Educacao_pai, temos 13 observações com valor desconhecido (9)
-Na variavel Altura_pai temos 492 observações desconhecidas (99)
-Na variavel Peso_pai temos 499 observações desconhecidas (999)
-Na variavel Rendimento_anual temos 124 observações desconhecidas (98)
-Na variavel Fuma temos 10 observações desconhecidas (9)
-Na variavel Tempo_sem_fumar temos 9 observações desconhecidas (98) e 1 não perguntado(99)
-Na variavel Numero_cigarros temos 10 observações desconhecidas (98)
+Na variavel Cor_mae, temos uma observação com valor desconhecido (99)  
+Na variavel Idade_mae temos duas observações desconhecidas (99)  
+Na variavel Educacao_mae temos uma observação desconhecida (9)  
+Na variavel Altura_mae temos 22 observações desconhecidas (99)  
+Na variavel Peso_mae temos 36 observações desconhecidas (999)  
+Na variavel Cor_pai, temos 5 observações com valor desconhecido (99)  
+Na variavel Idade_pai, temos 7 observações com valor desconhecido (99)  
+Na variavel Educacao_pai, temos 13 observações com valor desconhecido (9)  
+Na variavel Altura_pai temos 492 observações desconhecidas (99)  
+Na variavel Peso_pai temos 499 observações desconhecidas (999)  
+Na variavel Rendimento_anual temos 124 observações desconhecidas (98)  
+Na variavel Fuma temos 10 observações desconhecidas (9)  
+Na variavel Tempo_sem_fumar temos 9 observações desconhecidas (98) e 1 não perguntado(99)  
+Na variavel Numero_cigarros temos 10 observações desconhecidas (98)  
 
 Tiramos as variaveis Peso_pai e Altura_pai devido a quantidade elevada de observações desconhecidas. 
 
-```{r, echo=FALSE}
-dados<-dados[,-17] #Altura_pai
-dados<-dados[,-17] #Peso_pai
+```{r, echo=FALSE, warning=FALSE}
+#limpando os dados
+dados<-dados[,-17] #excluindo Altura_pai
+dados<-dados[,-17] #excluindo Peso_pai
 
+#retirando observações desconhecidas
 dados=filter(dados,Rendimento_anual!='98')
 dados=filter(dados,Cor_mae!='99')
 dados=filter(dados,Idade_mae!='99')
@@ -149,18 +143,83 @@ dados=filter(dados,Numero_cigarros!='98')
 
 ```
 
+Variáveis disponiveis ainda:  
+ 
+ Data_nasc       
+ Tempo_gestacao               
+ Peso             
+ Cor_mae                 
+ Educacao_mae           
+ Peso_mae                  
+ Peso_pai      
+ Altura_pai              
+ Estado_civil 2 desconhecidas(0)    
+ Fuma              
+ Numero_cigarros
+ Numero_gestacoes
+ Idade_mae 
+ Idade_pai 
+ Altura_mae
+ Cor_pai
+ Educacao_pai 
+ Rendimento_anual
+ Tempo_sem_fumar
 
-```{r}
-boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg, fill=Cor_mae))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
-boxplot_Cor_mae
+#Convertendo unidade de medidas
+
+```{r, echo=FALSE, warning=FALSE}
+#convertendo unidade de medidas 
+#1 onça equivale à 0,0283 quilos
+#Peso da criança
+
+library(dplyr)
+dados<-mutate(dados, Peso_kg=Peso*0.0283)
+
 ```
 
+#Frequencias
+```{r, echo=FALSE}
+#verificando a frequencia da variavel Fum
+freq_fuma=table(dados$Fuma)
+names(freq_fuma)<-c("Nunca","Fuma agora","Até a gravidez atual", "Uma vez, não agora")
+freq_fuma=as.data.frame(freq_fuma)
+names(freq_fuma)<-c("Varíavel Fuma", "Frequência")
+kable(freq_fuma)
+
+#library(xtable)
+#print(xtable(freq_fuma)) #tabela em latex
+```
+
+
+#Análise Descritiva
+
+**Grafico de Dispersão**
+
 ```{r}
+dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+
+dispersao_peso_pesomae
+```
+
+
+Boxplot para as variaveis categóricas e Dispersão para continua
+
+```{r, echo=FALSE, warning=FALSE}
+#bloxplot para peso por cor_mae
+library(ggplot2)
+boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg, fill=Cor_mae))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_mae
+```
+w
+```{r, echo=FALSE, warning=FALSE}
+#boxplot do peso por educacao_mae
 boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg, fill=Educacao_mae))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
 boxplot_Educacao_mae
 ```
 
-```{r}
+```{r,echo=FALSE, warning=FALSE}
+#boxplot do peso por educacao_pai
 boxplot_Educacao_pai <- ggplot(data = dados,aes(x=Educacao_pai, y=Peso_kg, fill=Educacao_pai))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação do pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(6)","HS unclear(7)"))
 boxplot_Educacao_pai
 ```
+
