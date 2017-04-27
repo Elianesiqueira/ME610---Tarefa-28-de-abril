@@ -197,19 +197,24 @@ kable(freq_fuma)
 
 #Análise Descritiva
 
+Com base na vizualização de análises descritivas (gráficos de dispersão e boxplos), observou-se as relações entre as variáveis explicativas com a variável resposta (peso do bebê ao nascer).Notou-se que existe pouca relação entre as variáveis explicativas "Altura_mae_cm","Idade_pai", "Idade_mae" e "Data_nasc" em relação ao peso do bebê, ou seja, o peso do bebê parece não estar correlacionado com estas variáveis. Portanto optou-se em não incluir estas variáveis explicativas mesmo num modelo inicial. Em relação às demais variáveis explicativas, todas apresentaram indícios de uma possível corelação com o peso dos bebês, de maneira que a distribuição dos dados referêntes à variável resposta muda conforme os valores observados nas variáveis explicativas. Nenhuma variável contínua/discreta aparentou ter uma relação não-linear com o peso dos bebês.
+
+
 **Grafico de Dispersão**
 
 ```{r}
-dispersao_peso_pesomae=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_pesomae
 ```
-
+MOderado
 ```{r}
 dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Data de nascimento")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_Data_nasc
 ```
+
+FRACA relaLinear
 
 ```{r}
 dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Tempo de gestacao")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
@@ -217,22 +222,31 @@ dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_
 dispersao_peso_Tempo_gestacao
 ```
 
+FORTE
+
 ```{r}
 dispersao_peso_Idade_mae=ggplot(data = dados, aes(x=Idade_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade da Mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_Idade_mae
 ```
 
+Pouca relação linear
+
 ```{r}
 dispersao_peso_Idade_pai=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade do Pai")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_Idade_pai
 ```
+
+Pouca relação linear
 ```{r}
-dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Altura da Mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Altura da Mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 dispersao_peso_Altura_mae
 ```
+Pouca relação linear
+
+
 Boxplot para as variaveis categóricas e Dispersão para continua
 
 ```{r, echo=FALSE, warning=FALSE}
@@ -241,24 +255,25 @@ library(ggplot2)
 boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg,))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
 boxplot_Cor_mae
 ```
-w
+INFLUENCIA
 ```{r, echo=FALSE, warning=FALSE}
 #boxplot do peso por educacao_mae
 boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=as.factor(Educacao_mae)),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
 boxplot_Educacao_mae
 ```
-
+INFLUENCIA
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por educacao_pai
 boxplot_Educacao_pai <- ggplot(data = dados,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação do pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(6)","HS unclear(7)"))
 boxplot_Educacao_pai
 ```
-
+INFLUENCIA
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Estado civil
 boxplot_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebê por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6),labels=c("?","Married","Legally Separated","Divorced","Widowed","Never Married"))
 boxplot_Estado_civil
 ```
+INFLUENCIA
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Rendimento anual
@@ -266,7 +281,7 @@ boxplot_Rendimento_anual <- ggplot(data = dados,aes(x=Rendimento_anual, y=Peso_k
 boxplot_Rendimento_anual
 ```
 
-
+INFLUÊNCIA****
 
 
 ```{r,echo=FALSE, warning=FALSE}
@@ -275,7 +290,7 @@ boxplot_Fuma <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(gro
 boxplot_Fuma
 ```
 
-
+INFLUENCIA
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Tempo_sem_fumar
@@ -283,7 +298,7 @@ boxplot_Tempo_sem_fumar <- ggplot(data = dados,aes(x=Tempo_sem_fumar, y=Peso_kg)
 boxplot_Tempo_sem_fumar
 ```
 
-
+INFLUENCIA
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Numero_cigarros
@@ -291,9 +306,34 @@ boxplot_Numero_cigarros <- ggplot(data = dados,aes(x=Numero_cigarros, y=Peso_kg)
 boxplot_Numero_cigarros
 ```
 
-
+INFLUENCIA
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Numero_gestacoes
 boxplot_Numero_gestacoes <- ggplot(data = dados,aes(x=Numero_gestacoes, y=Peso_kg))+geom_boxplot(aes(group=Numero_gestacoes),outlier.colour = "red")+labs(title="Peso do bebê por Numero gestações")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 boxplot_Numero_gestacoes
 ```
+
+
+INFLUENCIA
+
+
+```{r}
+#transformando as variáveis categóricas em fator
+dados$Cor_mae <- as.factor(dados$Cor_mae)
+dados$Educacao_mae <- as.factor(dados$Educacao_mae)
+dados$Educacao_pai <- as.factor(dados$Educacao_pai)
+dados$Estado_civil <- as.factor(dados$Estado_civil)
+dados$Rendimento_anual <- as.factor(dados$Rendimento_anual)
+dados$Fuma <- as.factor(dados$Fuma)
+dados$Tempo_sem_fumar <- as.factor(dados$Tempo_sem_fumar)
+dados$Numero_cigarros <- as.factor(dados$Numero_cigarros)
+dados$Numero_gestacoes <- as.factor(dados$Numero_gestacoes)
+```
+
+
+```{r}
+fit0 <- lm(Peso_kg~ Numero_gestacoes + Numero_cigarros + Tempo_sem_fumar + Fuma + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae + Peso_mae_kg + Tempo_gestacao,data = dados)
+
+summary(fit0)
+```
+
