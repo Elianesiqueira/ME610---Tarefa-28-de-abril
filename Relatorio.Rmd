@@ -65,8 +65,13 @@ Guilherme Pazian  RA:160323 \break
 \onehalfspacing
 \newpage
 
-```{r pacotes utilizados, echo=FALSE, eval=TRUE, warning=FALSE}
-#todos os pacotes utilizados estão aqui
+```{r, echo=FALSE}
+#definindo opções padrões 
+knitr::opts_chunk$set(fig.width=6, fig.height=4.5, fig.path='Figs/', fig.align='center', echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r pacotes utilizados, echo=FALSE,eval=TRUE, warning=FALSE}
+#pacotes utilizados
 library(ggplot2)
 library(knitr)
 library(dplyr)
@@ -85,6 +90,54 @@ O objetivo deste trabalho é verificar esta opinião através da análise do pes
 Os dados utilizados foram coletados através de entrevistas com as mães durante a gravidez e correspondem a um ano de estudo. Eles incluem 1236 nascimentos onde a criança sobreviveu pelo menos 28 dias. Além do peso das crianças, foram coletadas informações de outras variáveis que influenciam no peso das crianças.
 
 Para este estudo estamos considerando como variável resposta, o peso da criança ao nascer.
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Objetivo
+\end{enumerate}
+\vspace{0.3cm}
+
+Escreva o objetivo aqui
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Metodologia
+\end{enumerate}
+\vspace{0.3cm}
+
+Escreva a metodologia aqui
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Resultados
+\end{enumerate}
+\vspace{0.3cm}
+
+Escreva os resultados aqui
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Discussão
+\end{enumerate}
+\vspace{0.3cm}
+
+Escreva a discussão aqui
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Anexos
+\end{enumerate}
+\vspace{0.3cm}
+
+Coloque os anexos aqui
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Referências
+\end{enumerate}
+\vspace{0.3cm}
+
+Escreva as referencias aqui
 
 ```{r leitura dos dados, echo=FALSE, warning=FALSE}
 #setwd(choose.dir())
