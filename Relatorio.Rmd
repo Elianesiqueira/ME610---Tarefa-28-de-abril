@@ -11,10 +11,10 @@ header-includes:
 - \usepackage{lipsum}
 - \usepackage{multirow}
 output:
-  html_document: default
-  fig_caption: yes
-  mainfont: Times New Roman
   pdf_document: null
+  html_document: default
+  mainfont: Times New Roman
+  fig_caption: yes
 lang: pt-br
 setspace: doublespacing
 fontsize: 10pt
