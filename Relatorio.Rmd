@@ -1,25 +1,23 @@
 ---
-title: ""
+title: ''
 geometry: textwidth=18cm,textheight=21cm
-setspace: doublespacing
-lang: pt-br
 header-includes:
-- \usepackage{setspace} #pacote para espaço duplo
-- \usepackage{indentfirst} #pacote para identação
+- \usepackage{setspace}
+- \usepackage{indentfirst}
 - \usepackage[utf8]{inputenc}
 - \usepackage{mathptmx}
 - \usepackage{enumerate}
-- \usepackage{url} #pacote para iserir link
+- \usepackage{url}
 - \usepackage{lipsum}
-- \usepackage{multirow} #pacote para mesclar linhas de tabela
+- \usepackage{multirow}
 output:
-  pdf_document:
   html_document: default
   fig_caption: yes
   mainfont: Times New Roman
-  
+  pdf_document: null
+lang: pt-br
+setspace: doublespacing
 fontsize: 10pt
-
 ---
 
 \begin{titlepage}
@@ -67,10 +65,12 @@ Guilherme Pazian  RA:160323 \break
 
 ```{r, echo=FALSE}
 #definindo opções padrões 
-knitr::opts_chunk$set(fig.width=6, fig.height=4.5, fig.path='Figs/', fig.align='center', echo=FALSE, warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.path='Figs/', fig.align='center', echo=FALSE, warning=FALSE, message=FALSE)
 ```
 
 ```{r pacotes utilizados, echo=FALSE,eval=TRUE, warning=FALSE}
+#install.packages(c("ggplot2","knitr","dplyr", "xtable"))
+
 #pacotes utilizados
 library(ggplot2)
 library(knitr)
@@ -78,6 +78,27 @@ library(dplyr)
 library(xtable)
 ```
 
+```{r}
+testeF.CBM <- function(fit.model,m.C,m.M)
+
+{
+v.beta <-  cbind(fit.model$coef) # vetor com a estimativa dos parâmetros
+n <- nrow(model.matrix(fit.model)) # número de observações
+e.p <- nrow(v.beta) # número de parâmetros
+e.q <- nrow(m.C)  # número de linhas da matriz C
+m.cov.beta <- (vcov(fit.model)) # matriz de covariâncias dos parâmetros do modelo
+# Estatística do teste
+e.F <- t(m.C%*%v.beta-m.M)%*%solve(m.C%*%m.cov.beta%*%t(m.C))%*%(m.C%*%v.beta-m.M)/e.q
+e.pvalor <- 1-pf(e.F,e.q,n-e.p) # p-valor
+cat("Estatistica F = ",round(e.F,2),"\n")
+cat("pvalor = ",round(e.pvalor,4),"\n")
+cat("Matriz C :","\n")
+print(m.C)
+cat("Matriz M :","\n")
+print(m.M)
+
+}
+```
 
 \begin{enumerate}
 \item Introdução
@@ -85,19 +106,17 @@ library(xtable)
 \vspace{0.3cm}
 \setlength{\parindent}{3em}
 
-O objetivo deste trabalho é verificar esta opinião através da análise do peso da criança ao nascer
+As consequências do hábito de fumar são um dos assuntos mais importantes para pesquisa médica hoje em dia. Em particular, pesquisas anteriores estão apontando uma possível relação decrescente entre este hábito em mulheres durante a gravidez e o peso da criança ao nascer, ou seja, com a presença do hábito, o peso da criança é menor.
 
-Os dados utilizados foram coletados através de entrevistas com as mães durante a gravidez e correspondem a um ano de estudo. Eles incluem 1236 nascimentos onde a criança sobreviveu pelo menos 28 dias. Além do peso das crianças, foram coletadas informações de outras variáveis que influenciam no peso das crianças.
+Como relatado no Surgeon General's Report, 1989:
 
-Para este estudo estamos considerando como variável resposta, o peso da criança ao nascer.
+"O tabagismo parece ser um determinante mais significativo do peso ao nascer do que a altura, o peso, o numero de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê. A redução do peso ao nascer associada ao hábito de fumar parece ser um efeito direto do tabagismo sobre o crescimento fetal."
 
-\begin{enumerate}
-\setcounter{enumi}{1}
-\item Objetivo
-\end{enumerate}
-\vspace{0.3cm}
+O objetivo deste trabalho é verificar o quão válida é esta opinião através da análise do peso da criança ao nascer.
 
-Escreva o objetivo aqui
+Os dados utilizados foram coletados através de entrevistas com as mães durante a gravidez e correspondem a um ano de estudo. Eles incluem 1236 nascimentos onde a criança sobreviveu pelo menos 28 dias. Juntamente com o peso das crianças, foram coletadas informações de outras variáveis que influenciam no peso das crianças, como sexo do bebê, numero de gestações anteriores, hábito de fumar, numero de cigarros que fuma, se parou de fumar, quanto tempo faz, além de raça, altura, peso, nivel educacional e idade do pai e da mãe, estado civil da mãe e rendimento anual da familia.
+ 
+#descrição/metodologia
 
 \begin{enumerate}
 \setcounter{enumi}{2}
@@ -105,7 +124,64 @@ Escreva o objetivo aqui
 \end{enumerate}
 \vspace{0.3cm}
 
-Escreva a metodologia aqui
+Para este estudo as variáveis disponíveis no banco de dados são:
+
+- Peso
+- Sexo;
+- Data_nasc
+- Vivo
+- Qtd_feto
+- Tempo_gestacao
+- Nmero_gestacoes
+- Estado_civil
+- Rendimento_anual
+- Numero_cigarros
+- Tempo_sem_fumar
+- Fuma
+- Educacao_mae
+- Altura_mae
+- Peso_mae
+- Cor_mae
+- Idade_mae
+- Educacao_pai
+- Altura_pai
+- Peso_pai
+- Cor_pai
+- Idade_pai
+
+foi considerado o peso da criança ao nascer como variável resposta e as demais variáveis como explicativas, afim de avaliar a influencia das demais variáveis sobre o peso do bebê. 
+Em uma primeira análise do banco de dados disponível, notou-se a presença de crianças apenas do sexo masculino que sobreviveram pelo menos 28 dias e eram feto único**, tal caracerística levou a desconsideração das variáveis correspondentes, Sexo,Vivo e Qtd_feto.
+
+
+
+Na variavel Cor_mae, temos uma observação com valor desconhecido (99)  
+Na variavel Idade_mae temos duas observações desconhecidas (99)  
+Na variavel Educacao_mae temos uma observação desconhecida (9)  
+Na variavel Altura_mae temos 22 observações desconhecidas (99)  
+Na variavel Peso_mae temos 36 observações desconhecidas (999)  
+Na variavel Cor_pai, temos 5 observações com valor desconhecido (99)  
+Na variavel Idade_pai, temos 7 observações com valor desconhecido (99)  
+Na variavel Educacao_pai, temos 13 observações com valor desconhecido (9)  
+Na variavel Altura_pai temos 492 observações desconhecidas (99)  
+Na variavel Peso_pai temos 499 observações desconhecidas (999)  
+Na variavel Rendimento_anual temos 124 observações desconhecidas (98)  
+Na variavel Fuma temos 10 observações desconhecidas (9)  
+Na variavel Tempo_sem_fumar temos 9 observações desconhecidas (98) e 1 não perguntado(99)  
+Na variavel Numero_cigarros temos 10 observações desconhecidas (98)  
+
+Foram desconsideradas as variaveis Peso_pai e Altura_pai devido a quantidade elevada de observações desconhecidas.
+
+
+#Escrever aqui sobre as variaveis eliminadas e porque
+
+fazendo as devidas conversões para kg, cm
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Objetivo
+\end{enumerate}
+\vspace{0.3cm}
+
 
 \begin{enumerate}
 \setcounter{enumi}{3}
@@ -176,9 +252,10 @@ Na variavel Numero_cigarros temos 10 observações desconhecidas (98)
 Tiramos as variaveis Peso_pai e Altura_pai devido a quantidade elevada de observações desconhecidas. 
 
 ```{r, echo=FALSE, warning=FALSE}
+library(dplyr)
 #limpando os dados
-dados<-dados[,-17] #excluindo Altura_pai
-dados<-dados[,-17] #excluindo Peso_pai
+dados<-dados[,-17] #excluindo a variavel Altura_pai
+dados<-dados[,-17] #excluindo a variavel Peso_pai
 
 #retirando observações desconhecidas
 dados=filter(dados,Rendimento_anual!='98')
@@ -193,39 +270,20 @@ dados=filter(dados,Educacao_pai!='9')
 dados=filter(dados,Fuma!='9')
 dados=filter(dados,Tempo_sem_fumar!='98')
 dados=filter(dados,Numero_cigarros!='98')
+dados=filter(dados,Estado_civil!='0')
 #retirando observações absurdas para tempo de gestação
 dados=filter(dados,Tempo_gestacao<'500')
 
 ```
 
-Variáveis disponiveis ainda:  
- 
- Data_nasc       
- Tempo_gestacao               
- Peso             
- Cor_mae                 
- Educacao_mae           
- Peso_mae                  
- Peso_pai      
- Altura_pai              
- Estado_civil 2 desconhecidas(0)    
- Fuma              
- Numero_cigarros
- Numero_gestacoes
- Idade_mae 
- Idade_pai 
- Altura_mae
- Cor_pai
- Educacao_pai 
- Rendimento_anual
- Tempo_sem_fumar
-
-#Convertendo unidade de medidas
-
 ```{r, echo=FALSE, warning=FALSE}
 #convertendo unidade de medidas 
 #1 onça equivale à 0,0283 quilos
+#1 libra equivale a 0,453592 quilos
+#1 polegada equivale à 2,54cm
 #Peso da criança
+#Peso da mae
+#Altura da mae
 
 library(dplyr)
 dados<-mutate(dados, Peso_kg=Peso*0.0283495)
@@ -234,18 +292,125 @@ dados<- mutate(dados,Altura_mae_cm = Altura_mae*2.54)
 
 ```
 
-#Frequencias
-```{r, echo=FALSE}
-#verificando a frequencia da variavel Fum
-freq_fuma=table(dados$Fuma)
-names(freq_fuma)<-c("Nunca","Fuma agora","Até a gravidez atual", "Uma vez, não agora")
-freq_fuma=as.data.frame(freq_fuma)
-names(freq_fuma)<-c("Varíavel Fuma", "Frequência")
-kable(freq_fuma)
 
-#library(xtable)
-#print(xtable(freq_fuma)) #tabela em latex
+```{r}
+#boxplot1 Educação mãe
+
+
+dadosBoxplot1_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "Educação_mae"
+dadosBoxplot1_Educacao_mae$Educacao_mae<- factor(dadosBoxplot1_Educacao_mae$Educacao_mae,ordered = T)
+levels(dadosBoxplot1_Educacao_mae$Educacao_mae)<- c('Less than 8th grade','8th - 12th grade','HS graduate','HS+trade','HS+some college','College graduate','Trade school HS unclear')
+
+boxplot1_Educacao_mae <- ggplot(data = dadosBoxplot1_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
+
 ```
+
+```{r}
+#Juntando alguns níveis do fator "Educação Mãe"
+#retirando alguns niveis pois para "0" só temos 8 obs, e para "7" temos apenas 6 obs e a descrição de 6 e 7 é a mesma
+#'Less than 12th grade'
+dados$Educacao_mae[dados$Educacao_mae==0|dados$Educacao_mae==1]<-0 
+#'Trade'
+dados$Educacao_mae[dados$Educacao_mae==3|dados$Educacao_mae==6|dados$Educacao_mae==7]<-1 
+#'HS graduate'
+dados$Educacao_mae[dados$Educacao_mae==2]<-2  
+#'HS+some college'
+dados$Educacao_mae[dados$Educacao_mae==4]<-3  
+#'College graduate'
+dados$Educacao_mae[dados$Educacao_mae==5]<-4  
+```
+
+
+```{r}
+#Boxplot2 Educação Mãe
+dadosBoxplot2_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "Educação_mae"
+dadosBoxplot2_Educacao_mae$Educacao_mae<- factor(dadosBoxplot2_Educacao_mae$Educacao_mae,ordered = T)
+levels(dadosBoxplot2_Educacao_mae$Educacao_mae)<- c('Less than 12th grade','Trade','HS graduate','HS+some college','College graduate')
+
+boxplot2_Educacao_mae <- ggplot(data = dadosBoxplot2_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+```
+
+#########
+```{r}
+#boxplot1 Educação Pai
+
+
+dadosBoxplot1_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "Educação_pai"
+dadosBoxplot1_Educacao_pai$Educacao_pai<- factor(dadosBoxplot1_Educacao_pai$Educacao_pai,ordered = T)
+levels(dadosBoxplot1_Educacao_pai$Educacao_pai)<- c('Less than 8th grade','8th - 12th grade','HS graduate','HS+trade','HS+some college','College graduate','Trade school HS unclear6','Trade school HS unclear7')
+
+boxplot1_Educacao_pai <- ggplot(data = dadosBoxplot1_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
+
+```
+
+```{r}
+#Juntando alguns níveis do fator "Educação Pai"
+#retirando alguns niveis pois para "7" temos apenas 5 obs, "6" temos apenas 1 obs e a descrição de 6 e 7 é a mesma.
+#'Less than 8th grade'
+dados$Educacao_pai[dados$Educacao_pai==0]<-0
+#'8th - 12th grade'
+dados$Educacao_pai[dados$Educacao_pai==1]<-1
+#'Trade'
+dados$Educacao_pai[dados$Educacao_pai==3|dados$Educacao_pai==6|dados$Educacao_pai==7]<-1 
+#'HS graduate'
+dados$Educacao_pai[dados$Educacao_pai==2]<-2  
+#'HS+some college'
+dados$Educacao_pai[dados$Educacao_pai==4]<-3  
+#'College graduate'
+dados$Educacao_pai[dados$Educacao_pai==5]<-4  
+```
+
+
+```{r}
+#Boxplot2 Educação Pai
+dadosBoxplot2_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "Educação_pai"
+dadosBoxplot2_Educacao_pai$Educacao_pai<- factor(dadosBoxplot2_Educacao_pai$Educacao_pai,ordered = T)
+levels(dadosBoxplot2_Educacao_pai$Educacao_pai)<- c('Less than 8th grade','8th - 12th grade','Trade','HS graduate','HS+some college','College graduate')
+
+boxplot2_Educacao_pai <- ggplot(data = dadosBoxplot2_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+```
+
+
+```{r}
+#Estado civil
+dados$Estado_civil[dados$Estado_civil==1]<-'Casada'
+dados$Estado_civil[dados$Estado_civil==2]<-'Separado Legalmente'
+dados$Estado_civil[dados$Estado_civil==3]<-'Divorciado'
+dados$Estado_civil[dados$Estado_civil==5]<-'Nunca Casou'
+
+boxplot1_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebê por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+
+
+#juntando as categorias "Divorciado" e "Nunca Casou" pois estas tem 2 e 3 obs com a "Separado Legalmente" que tem 11 obs. O total é 16.
+
+dados$Estado_civil[dados$Estado_civil=='Separado Legalmente'|dados$Estado_civil== 'Divorciado'|dados$Estado_civil=='Nunca Casou']<- 'Nao Casada'
+
+boxplot2_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebê por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+```
+
+
+```{r}
+#Rendimento anual
+
+dados$Rendimento_anual[dados$Rendimento_anual==0]<-'<2500'
+dados$Rendimento_anual[dados$Rendimento_anual==1]<-'2500-4999'
+
+dados$Rendimento_anual[dados$Rendimento_anual==2|dados$Rendimento_anual==3|dados$Rendimento_anual==4|dados$Rendimento_anual==5|dados$Rendimento_anual==6|dados$Rendimento_anual==7]<-'5000-12499'
+
+dados$Rendimento_anual[dados$Rendimento_anual==8]<-'12500-15000'
+dados$Rendimento_anual[dados$Rendimento_anual==9]<-'>15000'
+
+
+dadosBoxplot1_Rendimento_anual <- dados[,c(22,18)]
+dadosBoxplot1_Rendimento_anual$Rendimento_anual<-factor(dadosBoxplot1_Rendimento_anual$Rendimento_anual,levels=c('<2500','2500-4999','5000-12499','12500-15000','>15000'),ordered = TRUE)
+
+
+boxplot_Rendimento_anual <- ggplot(data = dadosBoxplot1_Rendimento_anual,aes(x=Rendimento_anual, y=Peso_kg))+geom_boxplot(aes(group=Rendimento_anual),outlier.colour = "red")+labs(title="Peso do bebê por Rendimento Anual")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+```
+
+
+
+
 
 
 #Análise Descritiva
@@ -299,38 +464,79 @@ dispersao_peso_Altura_mae
 ```
 Pouca relação linear
 
-
+\newpage
 Boxplot para as variaveis categóricas e Dispersão para continua
 
 ```{r, echo=FALSE, warning=FALSE}
-#bloxplot para peso por cor_mae
+#boxplot Cor_mae antes de juntar 0 a 5
 library(ggplot2)
-boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg,))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
 boxplot_Cor_mae
+
+#dados para boxplot juntando 0 a 5
+dados$Cor_mae[dados$Cor_mae==0|dados$Cor_mae==1|dados$Cor_mae==2|dados$Cor_mae==3|dados$Cor_mae==4|dados$Cor_mae==5]<-'White'
+dados$Cor_mae[dados$Cor_mae==6]<-'Mex'
+dados$Cor_mae[dados$Cor_mae==7]<-'Black'
+dados$Cor_mae[dados$Cor_mae==8]<-'Asian'
+dados$Cor_mae[dados$Cor_mae==9]<-'Mixed'
+dados$Cor_mae[dados$Cor_mae==10]<-'Não Definido'
+#bloxplot para peso por cor_mae juntanto 0 a 5
+
+boxplot_cordamae=ggplot(data=dados, aes(x=Cor_mae, y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebê por Cor da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
+
+boxplot_cordamae
 ```
+
+```{r}
+#boxplot do peso por Cor_pai
+boxplot_Cor_pai <- ggplot(data = dados,aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do bebê por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_pai
+
+#dados para boxplot juntando 0 a 5
+dados$Cor_pai[dados$Cor_pai==0|dados$Cor_pai==1|dados$Cor_pai==2|dados$Cor_pai==3|dados$Cor_pai==4|dados$Cor_pai==5]<-'White'
+dados$Cor_pai[dados$Cor_pai==6]<-'Mex'
+dados$Cor_pai[dados$Cor_pai==7]<-'Black'
+dados$Cor_pai[dados$Cor_pai==8]<-'Asian'
+dados$Cor_pai[dados$Cor_pai==9]<-'Mixed'
+dados$Cor_pai[dados$Cor_pai==10]<-'Não Definido'
+#bloxplot para peso por cor_mae juntanto 0 a 5
+
+boxplot_cordopai=ggplot(data=dados, aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do bebê por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
+
+boxplot_cordopai
+```
+
+
 INFLUENCIA
 ```{r, echo=FALSE, warning=FALSE}
+
 #boxplot do peso por educacao_mae
-boxplot_Educacao_mae <- ggplot(data = dados,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=as.factor(Educacao_mae)),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(7)"))
-boxplot_Educacao_mae
+
+boxplot1_Educacao_mae
+
+boxplot2_Educacao_mae
 ```
+
 INFLUENCIA
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por educacao_pai
-boxplot_Educacao_pai <- ggplot(data = dados,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebê por Educação do pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7),labels=c("<8th","8th -12th","HS","HS+trade","HS+college","College","HS unclear(6)","HS unclear(7)"))
-boxplot_Educacao_pai
+ 
+boxplot1_Educacao_pai
+
+boxplot2_Educacao_pai
 ```
 INFLUENCIA
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Estado civil
-boxplot_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebê por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6),labels=c("?","Married","Legally Separated","Divorced","Widowed","Never Married"))
-boxplot_Estado_civil
+
+boxplot1_Estado_civil
+
+boxplot2_Estado_civil
 ```
 INFLUENCIA
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Rendimento anual
-boxplot_Rendimento_anual <- ggplot(data = dados,aes(x=Rendimento_anual, y=Peso_kg))+geom_boxplot(aes(group=Rendimento_anual),outlier.colour = "red")+labs(title="Peso do bebê por Rendimento Anual")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("<2500","2500-4999","5000-7499","7500-9999","10000-12499","12500-15000",">15000"))
 boxplot_Rendimento_anual
 ```
 
@@ -339,8 +545,15 @@ INFLUÊNCIA****
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Fuma
-boxplot_Fuma <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do bebê por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3),labels=c("Never","smmokes now","until current pregnancy","once did, not now"))
+boxplot_Fuma <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do bebê por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3),labels=c("Nunca","Fuma agora","Até a gravidez atual","Fumava, mas parou"))
 boxplot_Fuma
+
+dados$Fuma[dados$Fuma==2|dados$Fuma==3]<-2
+
+boxplot_Fuma2 <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do bebê por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")+ scale_x_discrete(limits= c(0,1,2),labels=c("Nunca","Fuma agora","Até a gravidez atual/Fumava, mas parou"))
+
+boxplot_Fuma2
+
 ```
 
 INFLUENCIA
@@ -353,7 +566,7 @@ boxplot_Tempo_sem_fumar
 
 INFLUENCIA
 
-```{r,echo=FALSE, warning=FALSE}
+```{r,echo=FALSE, warning=FALSE, fig.width=6.5}
 #boxplot do peso por Numero_cigarros
 boxplot_Numero_cigarros <- ggplot(data = dados,aes(x=Numero_cigarros, y=Peso_kg))+geom_boxplot(aes(group=Numero_cigarros),outlier.colour = "red")+labs(title="Peso do bebê por Numero cigarros")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("never smoked", "still smokes","during current preg", "within 1 yr", "1 to 2 years ago", "2 to 3 yr ago", "3 to 4 yrs ago", "5 to 9yrs ago", "10+yrs ago", "quit and don't know"))
 boxplot_Numero_cigarros
@@ -370,23 +583,102 @@ boxplot_Numero_gestacoes
 INFLUENCIA
 
 
+
+
+
 ```{r}
 #transformando as variáveis categóricas em fator
-dados$Cor_mae <- as.factor(dados$Cor_mae)
-dados$Educacao_mae <- as.factor(dados$Educacao_mae)
-dados$Educacao_pai <- as.factor(dados$Educacao_pai)
-dados$Estado_civil <- as.factor(dados$Estado_civil)
-dados$Rendimento_anual <- as.factor(dados$Rendimento_anual)
-dados$Fuma <- as.factor(dados$Fuma)
-dados$Tempo_sem_fumar <- as.factor(dados$Tempo_sem_fumar)
-dados$Numero_cigarros <- as.factor(dados$Numero_cigarros)
-dados$Numero_gestacoes <- as.factor(dados$Numero_gestacoes)
+dados2<-dados
+dados2$Cor_mae <- factor(dados2$Cor_mae)
+dados2$Educacao_mae <- factor(dados2$Educacao_mae,ordered= T)
+dados2$Educacao_pai <- factor(dados2$Educacao_pai,ordered= T)
+dados2$Estado_civil <- factor(dados2$Estado_civil,ordered= T)
+#trocando códigos por nomes para facilitar a interpretção no modelo
+dados2$Rendimento_anual <- factor(dados2$Rendimento_anual)
+#trocando códigos por nomes para facilitar a interpretção no modelo
+dados2$Fuma[dados2$Fuma==0]<-'Nunca'
+dados2$Fuma[dados2$Fuma==1]<-'Fuma'
+dados2$Fuma[dados2$Fuma==2]<-'Fumava'
+dados2$Tempo_sem_fumar <- factor(dados2$Tempo_sem_fumar)
+dados2$Numero_cigarros <- factor(dados2$Numero_cigarros)
+
+
+#padronizando as variáveis contínuas
+standard <- function(x){
+  xbar <- mean(x)
+  s <- sd(x)
+  result <- (x - xbar)/s
+  return(result)
+}
+
+dados2$Peso_mae_kg <- standard(dados2$Peso_mae_kg)
+dados2$Data_nasc <- standard(dados2$Data_nasc)
+dados2$Tempo_gestacao <- standard(dados2$Tempo_gestacao)
+dados2$Altura_mae_cm <- standard(dados2$Altura_mae_cm)
+dados2$Numero_gestacoes <- standard(dados2$Numero_gestacoes)
 ```
 
 
 ```{r}
-fit0 <- lm(Peso_kg~ Numero_gestacoes + Numero_cigarros + Tempo_sem_fumar + Fuma + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae + Peso_mae_kg + Tempo_gestacao,data = dados)
+fit0 <- lm(Peso_kg~ Fuma + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae +Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Idade_mae+Altura_mae_cm+Idade_pai+Tempo_sem_fumar,data = dados2)
 
 summary(fit0)
+
+summary(fit0)$r.squared
+summary(fit0)$adj.r.squared
 ```
+
+Nenhuma estimativa relacionada com as Variáveis "Tempo sem Fumar","Estado Civil", "Educação Pai", "Educação Mãe", "Cor da Mãe","idade da mãe" e "idade do pai" foram significativos, portanto, será ajustado um novo modelo sem estas variáveis:
+```{r}
+fit1 <- lm(Peso_kg~ Fuma + Rendimento_anual  +Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+summary(fit1)
+
+summary(fit1)$r.squared
+summary(fit1)$adj.r.squared
+```
+
+No novo modelo, Nenhuma estimativa relacionada com a Variável "Rendimento Anual" foi estatísticamente significativa, portanto, será ajustado um novo modelo sem estas variáveis:
+
+```{r}
+fit2 <- lm(Peso_kg~ Fuma+Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+summary(fit2)
+
+summary(fit2)$r.squared
+summary(fit2)$adj.r.squared
+```
+
+Note que os coeficientes referentes as cores do pai "Não definido" e "Black" são estatísticamente não significativos, portanto, estes são bem similires ao grupo de cor "Asian", vamos então ajustar um novo modelo com as cores "Asian", "Não definido" e "Black" pertencendo a um mesmo grupo de cor.
+
+```{r}
+dados2$Cor_pai[dados2$Cor_pai=='Asian'|dados2$Cor_pai=='Não Definido'|dados2$Cor_pai=='Black']<-'ASN'
+```
+
+
+```{r}
+fit3 <- lm(Peso_kg~ Fuma+Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+summary(fit3)
+
+summary(fit3)$r.squared
+summary(fit3)$adj.r.squared
+```
+
+
+9 - Educacao_pai1
+36 - Cor_pai10
+43 - Idade_pai
+
+
+```{r}
+aux1 <- matrix(0,28,8)
+aux2 <- diag(1,28,28)
+aux3 <- matrix(0,28,7)
+C<-cbind2(aux1,aux2)
+C<-cbind2(C,aux3)
+M <- c(rep(0,43))
+
+#testeF.CBM(fit0,m.C = C,m.M = M)
+```
+
+
+
 
