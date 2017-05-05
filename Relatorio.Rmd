@@ -209,6 +209,7 @@ Em uma primeira análise do banco de dados disponível, notou-se a presença de cri
 As variáveis correspondentes à Peso e Altura do pai foram desconsideradas devido ao elevado número de observações faltantes, 499 e 492 respectivamente. 
 As variaveis Peso_pai e Altura_pai foram desconsideradas devido a quantidade elevada de observações desconhecidas. Para as demais variáveis, foram consideradas nas análises, apenas as observações com informações completas de todas as variáveis envolvidas. Além disso, no banco de dados original, as variáveis correspondentes ao peso da criança,peso e altura da mãe e do pai estavam em unidades de medidas não usuais, onça, libras e polegadas respectivamente, então foram feitas as devidas conversões para kg no caso dos pesos e centímetro no caso das alturas.
 
+
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item Objetivo
@@ -332,7 +333,7 @@ dadosBoxplot1_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "Educaç
 dadosBoxplot1_Educacao_mae$Educacao_mae<- factor(dadosBoxplot1_Educacao_mae$Educacao_mae,ordered = T)
 levels(dadosBoxplot1_Educacao_mae$Educacao_mae)<- c('Less than 8th grade','8th - 12th grade','HS graduate','HS+trade','HS+some college','College graduate','Trade school HS unclear')
 
-boxplot1_Educacao_mae <- ggplot(data = dadosBoxplot1_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
+boxplot1_Educacao_mae <- ggplot(data = dadosBoxplot1_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebê por Educação da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
 
 ```
 
@@ -452,12 +453,12 @@ Com base na vizualização de análises descritivas (gráficos de dispersão e boxplo
 **Grafico de Dispersão**
 
 ```{r}
-dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Peso da mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 MOderado
 ```{r}
-dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Data de nascimento")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Data de nascimento")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 
 ```
@@ -465,27 +466,27 @@ dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_
 FRACA relaLinear
 
 ```{r}
-dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Tempo de gestacao")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Tempo de gestacao")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 FORTE
 
 ```{r}
-dispersao_peso_Idade_mae=ggplot(data = dados, aes(x=Idade_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade da Mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Idade_mae=ggplot(data = dados, aes(x=Idade_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade da Mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 Pouca relação linear
 
 ```{r}
-dispersao_peso_Idade_pai=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade do Pai")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Idade_pai=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Idade do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 Pouca relação linear
 ```{r}
-dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Altura da Mãe")+theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+geom_point()+labs(title="Peso do bebê por Altura da Mãe")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 Pouca relação linear
@@ -567,20 +568,42 @@ boxplot_Numero_gestacoes <- ggplot(data = dados,aes(x=Numero_gestacoes, y=Peso_k
 ```{r}
 #transformando as variáveis categóricas em fator
 dados2<-dados
-dados2$Cor_mae <- factor(dados2$Cor_mae)
 dados2$Educacao_mae <- factor(dados2$Educacao_mae,ordered= T)
 dados2$Educacao_pai <- factor(dados2$Educacao_pai,ordered= T)
 dados2$Estado_civil <- factor(dados2$Estado_civil,ordered= T)
 #trocando códigos por nomes para facilitar a interpretção no modelo
 dados2$Rendimento_anual <- factor(dados2$Rendimento_anual)
 #trocando códigos por nomes para facilitar a interpretção no modelo
-dados2$Fuma[dados2$Fuma==0]<-'Nunca'
+dados2$Fuma[dados2$Fuma==0]<-'0-Nunca'
 dados2$Fuma[dados2$Fuma==1]<-'Fuma'
 dados2$Fuma[dados2$Fuma==2]<-'Fumava'
-dados2$Tempo_sem_fumar <- factor(dados2$Tempo_sem_fumar)
-dados2$Numero_cigarros <- factor(dados2$Numero_cigarros)
+#####
+#trocando códigos por nomes para facilitar a interpretção no modelo
+dados2$Numero_cigarros[dados2$Numero_cigarros==0]<-'0-Nunca'
+dados2$Numero_cigarros[dados2$Numero_cigarros==1]<-'1-4'
+dados2$Numero_cigarros[dados2$Numero_cigarros==2]<-'5-9'
+dados2$Numero_cigarros[dados2$Numero_cigarros==3]<-'10-14'
+dados2$Numero_cigarros[dados2$Numero_cigarros==4]<-'15-19'
+dados2$Numero_cigarros[dados2$Numero_cigarros==5]<-'20-29'
+dados2$Numero_cigarros[dados2$Numero_cigarros==6]<-'30-39'
+dados2$Numero_cigarros[dados2$Numero_cigarros==7]<-'40-60'
+dados2$Numero_cigarros[dados2$Numero_cigarros==8]<-'60+'
+dados2$Numero_cigarros[dados2$Numero_cigarros==9]<-'Não Sabe'
 
+#dados2$Tempo_sem_fumar <- factor(dados2$Tempo_sem_fumar)
+#####
+#trocando códigos por nomes para facilitar a interpretção no modelo
 
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==0]<-'0-Nunca'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==1]<-'Fuma Agora'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==2]<-'Durante_a_g.'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==3]<-'<1'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==4]<-'1-2'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==5]<-'2-3'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==6]<-'3-4'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==7]<-'5-9'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==8]<-'10+'
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==9]<-'Não Sabe'
 #padronizando as variáveis contínuas
 standard <- function(x){
   xbar <- mean(x)
@@ -596,51 +619,116 @@ dados2$Altura_mae_cm <- standard(dados2$Altura_mae_cm)
 dados2$Numero_gestacoes <- standard(dados2$Numero_gestacoes)
 ```
 
-
+Note que as variáveis "Fuma" e "Tempo sem Fumar" contém a mesma informação, ou seja, as mães não fumantes (classificação em "Fuma"), são classificadas como "Nunca fumou" (classificação em "Tempo_sem_fumar") assim como as mães fumantes (classificação em "Fuma") são classicadas como "Ainda Fuma" (classificação em "Tempo_sem_fumar"), as mães do grupo "fumava" (classificação em "Fuma") foram classificadas em relação ao tempo em que fumaram na variável "Tempo sem fumar". A partir dessa premissa, vamos ajustar um primeiro modelo excluindo-se a variável "Tempo_sem_fumar" já que esta possui a mesma informação que a variável "Fuma" e é menos específica (não temos interesse específico na quantidade diária de cigarros consumida por indivíduo).
 ```{r}
-fit0 <- lm(Peso_kg~ Fuma + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae +Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Idade_mae+Altura_mae_cm+Idade_pai+Tempo_sem_fumar,data = dados2)
+fit0 <- lm(Peso_kg~ Fuma + Tempo_sem_fumar + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae +Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Idade_mae+Altura_mae_cm+Idade_pai,data = dados2)
 
 #summary(fit0)
 
-#summary(fit0)$r.squared
-#summary(fit0)$adj.r.squared
+summary(fit0)$r.squared
+summary(fit0)$adj.r.squared
 ```
 
-Nenhuma estimativa relacionada com as Variáveis "Tempo sem Fumar","Estado Civil", "Educação Pai", "Educação Mãe", "Cor da Mãe","idade da mãe" e "idade do pai" foram significativos, portanto, será ajustado um novo modelo sem estas variáveis:
 ```{r}
-fit1 <- lm(Peso_kg~ Fuma + Rendimento_anual  +Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+library(AER)
+epfit0robusto <- vcovHC(fit0, type = "HC1")
+#diag(epfit0robusto)
+coeftest(fit0, epfit0robusto)
+#tabelarobusta(fit0)
+```
+
+Nenhuma estimativa relacionada com as Variáveis "Tempo sem Fumar" , "Rendimento Anual", "Estado Civil", "Educação Pai", "Educação Mãe","idade da mãe" e "idade do pai" foram significativos, portanto, será ajustado um novo modelo sem estas variáveis:
+```{r}
+fit1 <- lm(Peso_kg~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
 #summary(fit1)
 
-#summary(fit1)$r.squared
-#summary(fit1)$adj.r.squared
-```
-
-No novo modelo, Nenhuma estimativa relacionada com a Variável "Rendimento Anual" foi estatísticamente significativa, portanto, será ajustado um novo modelo sem estas variáveis:
-
-```{r}
-fit2 <- lm(Peso_kg~ Fuma+Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
-#summary(fit2)
-
-#summary(fit2)$r.squared
-#summary(fit2)$adj.r.squared
-```
-
-Note que os coeficientes referentes as cores do pai "Não definido" e "Black" são estatísticamente não significativos, portanto, estes são bem similires ao grupo de cor "Asian", vamos então ajustar um novo modelo com as cores "Asian", "Não definido" e "Black" pertencendo a um mesmo grupo de cor.
-
-```{r}
-dados2$Cor_pai[dados2$Cor_pai=='Asian'|dados2$Cor_pai=='Não Definido'|dados2$Cor_pai=='Black']<-'ASN'
+summary(fit1)$r.squared
+summary(fit1)$adj.r.squared
 ```
 
 
+
 ```{r}
-fit3 <- lm(Peso_kg~ Fuma+Cor_pai+ Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+epfit1robusto <- vcovHC(fit1, type = "HC1")
+#diag(epfit1robusto)
+coeftest(fit1, epfit1robusto)
+#tabelarobusta(fit1)
+#model.matrix(fit1)
+```
+No novo modelo,note que o coeficiente referente ao fator "Fumava" da variável Fuma é não significante, ou seja, não é diferente do grupo de referência ("Nunca"), portanto, no próximo modelo vamos ajustar esta variável com só dois fatores ("Fuma" e "Nunca/Fumava").
+
+
+Note também que os coeficientes, referentes as cores do pai, "Não definido" é estatísticamente não significativo, portanto, este é bem similire ao grupo de cor "Asian", então vamos ajustar o novo modelo com as cores "Asian" e "Não definido" pertencendo a um mesmo grupo de cor ("Asian/Não definido").
+
+O mesmo acontece para a variável "Cor mãe" nos fatores "Mex","Mixed" e "Não Definido", portanto os novos fatores no proximo modelo são "Asian/Mex/Mixed/Não Definido", "Black" e "White"
+
+```{r}
+dados2$Fuma[dados2$Fuma=='0-Nunca'|dados2$Fuma=='Fumava']<-'0-Nunca/Fumava'
+dados2$Cor_pai[dados2$Cor_pai=='Asian'|dados2$Cor_pai=='Não Definido']<-'Asian/Não definido'
+dados2$Cor_mae[dados2$Cor_mae=='Asian'|dados2$Cor_mae=='Mex'|dados2$Cor_mae=='Mixed'|dados2$Cor_mae=='Não Definido']<-'Asian/Mex/Mixed/Naodefinido'
+
+```
+
+
+```{r}
+fit3 <- lm(Peso_kg~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
 #summary(fit3)
 
-#summary(fit3)$r.squared
-#summary(fit3)$adj.r.squared
+summary(fit3)$r.squared
+summary(fit3)$adj.r.squared
 ```
 
 
+```{r}
+epfit3robusto <- vcovHC(fit3, type = "HC1")
+#diag(epfit3robusto)
+coeftest(fit3, epfit3robusto)
+#tabelarobusta(fit3)
+```
+
+dados Cor do pai "Black" é igual à referência.
+dados Cor da mãe "White" é igual à referência.
+```{r}
+dados2$Cor_pai[dados2$Cor_pai=='Black'|dados2$Cor_pai=='Asian/Não definido']<-'Asian/Não definido/Black'
+dados2$Cor_mae[dados2$Cor_mae=='White'|dados2$Cor_mae=='Asian/Mex/Mixed/Naodefinido']<-'Asian/Mex/Mixed/Naodefinido/White'
+```
+
+
+```{r}
+fit4 <- lm(Peso_kg~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+#summary(fit4)
+
+summary(fit4)$r.squared
+summary(fit4)$adj.r.squared
+```
+
+
+```{r}
+epfit4robusto <- vcovHC(fit4, type = "HC1")
+#diag(epfit4robusto)
+coeftest(fit4, epfit4robusto)
+#tabelarobusta(fit4)
+```
+
+dados Cor da mãe "Black" é igual à referência. Portanto, todos as cores da mãe são equivalentes quanto ao peso do bebê. O novo modelo não contemplará a variável Cor da mãe.
+
+
+
+```{r}
+fit5 <- lm(Peso_kg~ Fuma + Cor_pai + Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero_gestacoes+Altura_mae_cm,data = dados2)
+#summary(fit5)
+
+summary(fit5)$r.squared
+summary(fit5)$adj.r.squared
+```
+
+
+```{r}
+epfit5robusto <- vcovHC(fit5, type = "HC1")
+#diag(epfit5robusto)
+coeftest(fit5, epfit5robusto)
+#tabelarobusta(fit5)
+```
 9 - Educacao_pai1
 36 - Cor_pai10
 43 - Idade_pai
@@ -656,6 +744,7 @@ M <- c(rep(0,43))
 
 #testeF.CBM(fit0,m.C = C,m.M = M)
 ```
+
 
 \newpage
 
