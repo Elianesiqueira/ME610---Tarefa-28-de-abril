@@ -1,0 +1,24 @@
+Original;Vari†vel;Significado;Qtd_niveis
+race ;Cor_mae;Raáa da m∆e;5 n°veis
+ed;Educacao_mae;N°vel educacional da m∆e;7 n°veis
+drace;Cor_pai;Raáa do pai;5 n°veis
+ded;Educacao_pai;N°vel educacional do pai;7 n°veis
+marital;Estado_civil;Estado civil dos pais;5 n°veis
+inc;Rendimento_anual;Rendimento anual familiar;5 n°veis
+smoke;Fuma;A m∆e fuma?;4 n°veis
+time;Tempo_sem_fumar;Se a m∆e parou de fumar, a quanto tempo?;9 n°veis
+number;Numero_cigarros;N£mero de cigarros fumados por dia;9 n°veis
+wt ;Peso;Peso do bebà;
+ht;Altura_mae;Altura da m∆e;
+wt ;Peso_mae;Peso da m∆e;
+date ;Data_nasc;Data de nascimento;
+gestation ;Tempo_gestacao;Duraá∆o da gestaá∆o;
+parity ;Numero_gestacoes;Numero de gestaá‰es anteriores;
+age ;Idade_mae;Idade da m∆e;
+dage;Idade_pai;Idade do pai;
+pluralty ;Qtd_feto;Quantidade de fetos;
+outcome ;Vivo;Nascido vivo ou n∆o;
+sex ;Sexo;Sexo do bebà;
+wt ;Peso;Peso do bebà;
+dht;Altura_pai;Altura do pai;
+dwt  ;Peso_pai;Peso do pai;
