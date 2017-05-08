@@ -6,7 +6,6 @@ date: "05 de maio de 2017"
 header-includes:
  - \usetheme{CambridgeUS}
  - \usecolortheme{seahorse}
- 
 output: beamer_presentation
 
 ---
@@ -620,13 +619,29 @@ coef4=coefrob_fit4
 
 ##Sumário
 \begin{enumerate}
-  \item Objetivo
+  \item Objetivo / Motivação
+  \item Banco de dados
   \item Preparação dos dados
   \item Análise Descritiva
   \item Análise Inferencial 
   \item Resultados
   \item Conclusão
 \end{enumerate}
+
+##Banco de dados
+
+ 
+
+
+\begin{itemize}
+  \item 1 ano de estudo
+  \item 
+  \item 1236 nascimentos
+  \item 
+  \item 22 variáveis
+  \item 4 descartadas
+  \item 
+\end{itemize}
 
 ## Preparação dos dados
 
