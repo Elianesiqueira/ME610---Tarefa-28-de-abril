@@ -1,24 +1,24 @@
-Original;Vari vel;Significado;Qtd_niveis
-race ;Cor_mae;Ra‡a da mÆe;5 n¡veis
-ed;Educacao_mae;N¡vel educacional da mÆe;7 n¡veis
-drace;Cor_pai;Ra‡a do pai;5 n¡veis
-ded;Educacao_pai;N¡vel educacional do pai;7 n¡veis
-marital;Estado_civil;Estado civil dos pais;5 n¡veis
-inc;Rendimento_anual;Rendimento anual familiar;5 n¡veis
-smoke;Fuma;A mÆe fuma?;4 n¡veis
-time;Tempo_sem_fumar;Se a mÆe parou de fumar, a quanto tempo?;9 n¡veis
-number;Numero_cigarros;N£mero de cigarros fumados por dia;9 n¡veis
-wt ;Peso;Peso do bebˆ;
-ht;Altura_mae;Altura da mÆe;
-wt ;Peso_mae;Peso da mÆe;
-date ;Data_nasc;Data de nascimento;
-gestation ;Tempo_gestacao;Dura‡Æo da gesta‡Æo;
-parity ;Numero_gestacoes;Numero de gesta‡äes anteriores;
-age ;Idade_mae;Idade da mÆe;
-dage;Idade_pai;Idade do pai;
-pluralty ;Qtd_feto;Quantidade de fetos;
-outcome ;Vivo;Nascido vivo ou nÆo;
-sex ;Sexo;Sexo do bebˆ;
-wt ;Peso;Peso do bebˆ;
-dht;Altura_pai;Altura do pai;
-dwt  ;Peso_pai;Peso do pai;
+Original,Vari vel,Significado,Qtd_niveis
+race ,Cor_mae,Raça da mãe,5
+ed,Educacao_mae,Nível educacional da mãe,7
+drace,Cor_pai,Raça do pai,5
+ded,Educacao_pai,Nível educacional do pai,7
+marital,Estado_civil,Estado civil dos pais,5
+inc,Rendimento_anual,Rendimento anual familiar,5
+smoke,Fuma,A mãe fuma?,4
+time,Tempo_sem_fumar,Se a mãe parou de fumar,9
+number,Numero_cigarros,Número de cigarros fumados por dia,9
+wt ,Peso,Peso do bebê,
+ht,Altura_mae,Altura da mãe,
+wt ,Peso_mae,Peso da mãe,
+date ,Data_nasc,Data de nascimento,
+gestation ,Tempo_gestacao,Duração da gestação,
+parity ,Numero_gestacoes,Numero de gestações anteriores,
+age ,Idade_mae,Idade da mãe,
+dage,Idade_pai,Idade do pai,
+pluralty ,Qtd_feto,Quantidade de fetos,
+outcome ,Vivo,Nascido vivo ou não,
+sex ,Sexo,Sexo do bebê,
+wt ,Peso,Peso do bebê,
+dht,Altura_pai,Altura do pai,
+dwt  ,Peso_pai,Peso do pai,
