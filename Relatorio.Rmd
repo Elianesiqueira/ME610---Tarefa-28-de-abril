@@ -255,18 +255,14 @@ Estimativas observadas pelo ajuste do modelo:
 \end{tabular}
 \end{table}
 
-
+Medidas de poder preditivo do modelo:
+$R^2$ = 
+$\bar{R}^2$ = 
 ### 6. Discussão
-
+Observamos que o modelo dito irredutível teve um poder preditivo rezoávelmente bom, portanto faz sentido obter conclusões com base neste modelo. 
 Com base nos resultados obtidos neste estudo, observamos a variável "Cor/Raça do Pai" no modelo, a qual não tão intuitiva para explicar o peso do bebê, porém seus coeficientes indicam uma grande influência no peso do mesmo. Contudo, como esta variável não é de interesse para sanar o objetivo deste estudo, não serão levantadas discussões sobre a relação entre "Cor/Raça do Pai" e Peso do bebê. 
 Segundo as estimativas do modelo, o fato da mãe da criança fumar ou não têm grande impacto negativo quanto ao peso do bebê, por exemplo, a diferença esperada no peso do bebê de uma mãe não fumante (Nunca Fumou ou Fumava) comparada com uma mãe fumante com as mesmas características é igual à **0.2390**, valor este equivalente a **1.21** vezes o valor observado para o coeficiente referente ao "Tempo de gestação", de modo que é equivalente ao aumento em **1.21** vezes uma unidade de desvio padrão observado de Tempo de Gestação da mãe. Segundo a tabela06 em anexo, o desvio padrão observado nos dados para a variável "Tempo de gestação" é **15.166**, ou seja, o peso esperado para o filho de uma mãe que fuma equivale ao peso esperado para o filho de uma mãe com as mesmas características, porém que não fuma e que teve aproximadamente **18** dias a menos de gestação.
-Analogamente, de acordo com o modelo ajustado, levando-se em consideração as mesmas características inseridas, o fato da mãe fumar tem efeito no peso esperado do bebê equivalente (isoladamente e nas mesmas condições) a:
-Efeito de uma redução de 51,87 kg no peso da mãe.
-Efeito de uma redução de 9,02 Gestações anteriores da mãe.
-Efeito de uma redução de 22,05 cm na altura da mãe.
-
-
-Como em geral estas variáveis são intrínsecas à mãe, ou seja, não estão sujeitas a alterações estipuladas, temos portanto, que os dados indicam uma concordância com o relato no Surgeon General's Report 1989, ou seja, o fato da mãe fumar parece ser uma variável mais determinante quanto ao peso do bebê do que altura, o peso, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê.
+Analogamente, de acordo com o modelo ajustado, levando-se em consideração as mesmas características, o fato da mãe fumar tem efeito no peso esperado do bebê equivalente ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 51,87 kg no peso da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 9,02 Gestações anteriores da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 22,05 cm na altura da mãe. Nota-se que os valores "equivalentes" ao fato da mãe fumar durante a gravidez são bastante significativos, ou seja, a redução desses valores de altura, peso, tempo de gestação e número de gestações anteriores representam, isoladamente, uma diferenciação clara nas características físicas ou de estilo de vida da mãe. Como em geral estas variáveis são intrínsecas à mãe, de maneira que não estão sujeitas a alterações estipuladas, temos uma indicação clara de que as informações obtidas através dos dados concordam com o relato no Surgeon General's Report 1989, ou seja, o fato da mãe fumar parece ser uma variável mais determinante quanto ao peso do bebê do que altura, o peso, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê.
 
 
 ```{r leitura dos dados, echo=FALSE, warning=FALSE}
