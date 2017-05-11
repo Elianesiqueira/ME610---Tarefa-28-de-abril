@@ -2,7 +2,7 @@
 title: "ME610 - Estatística Aplicada"
 author: "Eliane Siqueira - RA:155233 \\ Guilherme Pazian - RA: 160323"
 institute: "Universidade Estadual de Campinas"
-date: "05 de maio de 2017"
+date: "12 de maio de 2017"
 header-includes:
  - \usetheme{CambridgeUS}
  - \usecolortheme{seahorse}
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(fig.width=4.5, fig.height=3.0 ,fig.path='Figs/', fig.align
 ```
 
 ```{r pacotes utilizados, echo=FALSE,eval=TRUE, warning=FALSE}
-#install.packages(c("ggplot2","knitr","dplyr", "xtable"))
+#install.packages(c("ggplot2","knitr","dplyr", "xtable", "captioner", "tidyverse", "AER"))
 
 #pacotes utilizados
 library(ggplot2)
@@ -630,44 +630,35 @@ coef4=coefrob_fit4
 
 ##Banco de dados
 
- 
-
+Os dados correspondem a informações de um ano de estudo. Mães foram entrevistadas durante a gravidez para coletar informações de outras variáveis que tem influência sobre o peso das crianças.
 
 \begin{itemize}
-  \item 1 ano de estudo
-  \item 
   \item 1236 nascimentos
-  \item 
-  \item 22 variáveis
-  \item 4 descartadas
-  \item 
+  \item Crianças nascidas entre 1960 e 1967
+  \item 22 variáveis de interesse
 \end{itemize}
+
+
+##Banco de dados - Variáveis Categóricas
+
+##Banco de dados - Variáveis Contínuas e discretas
+
+##Banco de dados - Variáveis Descartadas
+
+As variáveis descartadas inicialmente foram:
+
+
 
 ## Preparação dos dados
 
-\begin{enumerate}
+\begin{itemize}
   \item Variáveis categóricas com apenas um nível
   \item Observações faltantes
   \item Observações não classificadas
   \item Observações absurdas 
   \item Conversão d
   \item Análise descritiva 
-\end{enumerate}
-## 
-
-```{r}
-boxplot1_Estado_civil
-```
-
-##
-```{r}
-boxplot_Rendimento_anual
-```
-
-##
-```{r}
-boxplot1_Educacao_mae
-```
+\end{itemize}
 
 
 ## Metodologia
