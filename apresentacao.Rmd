@@ -36,11 +36,11 @@ figs <- captioner(prefix="Figura")
 tbls <- captioner(prefix="Tabela")
 
 #legendas para as tabelas
-legenda_tab1 = tbls(name="table_1",caption = "Ajuste do primeiro modelo")
-legenda_tab2 = tbls(name="table_2",caption = "Ajuste do segundo modelo")
-legenda_tab3 = tbls(name="table_3",caption = "Ajuste do terceiro modelo")
-legenda_tab4 = tbls(name="table_4",caption = "Ajuste do quarto modelo")
-legenda_tab5 = tbls(name="table_5",caption = "Ajuste do quarto modelo")
+legenda_tab5 = tbls(name="table_1",caption = "Ajuste do modelo final")
+legenda_tab1 = tbls(name="table_2",caption = "Ajuste do primeiro modelo")
+legenda_tab2 = tbls(name="table_3",caption = "Ajuste do segundo modelo")
+legenda_tab3 = tbls(name="table_4",caption = "Ajuste do terceiro modelo")
+legenda_tab4 = tbls(name="table_5",caption = "Ajuste do quarto modelo")
 legenda_tab6 = tbls(name="table_6",caption = "Medidas descritivas")
 #colocar isso acima de cada tabela
 #\begin{center}
@@ -619,12 +619,12 @@ coef4=coefrob_fit4
 
 ##Sumário
 \begin{enumerate}
-  \item Objetivo / Motivação
+  \item Objetivo
   \item Banco de dados
   \item Preparação dos dados
-  \item Análise Descritiva
-  \item Análise Inferencial 
+  \item Metodologia
   \item Resultados
+  \item Discussão
   \item Conclusão
 \end{enumerate}
 
@@ -638,58 +638,80 @@ Os dados correspondem a informações de um ano de estudo. Mães foram entrevistada
   \item 22 variáveis de interesse
 \end{itemize}
 
+```{r}
+#variáveis
+
+variaveis<-read.csv("variaveisporcategoria.csv", header = T, sep = ",")
+```
+
 
 ##Banco de dados - Variáveis Categóricas
 
+
+- Cor_mae: Raça da mãe (5 níveis) 
+- Educacao_mae: Nível educacional da mãe (7 níveis) 
+- Cor_pai: Raça do pai (5 níveis)
+- Educacao_pai: Nível educacional do pai (7 níveis) 
+- Estado_civil: Estado civil dos pais (5 níveis) 
+- Rendimento_anual: Rendimento anual familiar (5 níveis) 
+- Fuma: A mãe fuma? (4 níveis) 
+- Tempo_sem_fumar: Se a mãe parou de fumar (9 níveis) 
+- Numero_cigarros: Número de cigarros fumados por dia (9 níveis)
+
+
 ##Banco de dados - Variáveis Contínuas e discretas
+
+
+- Peso: Peso do bebê
+- Altura_mae: Altura da mãe 
+- Peso_mae: Peso da mãe 
+- Data_nasc: Data de nascimento 
+- Tempo_gestacao: Duração da gestação 
+- Numero_gestacoes: Numero de gestações anteriores 
+- Idade_mae: Idade da mãe
+- Idade_pai: Idade do pai
+
 
 ##Banco de dados - Variáveis Descartadas
 
-As variáveis descartadas inicialmente foram:
-
-
+- Qtd_feto: Quantidade de fetos  
+- Vivo: Nascido vivo ou não 
+- Sexo: Sexo do bebê 
+- Peso: Peso do bebê  
+- Altura_pai: Altura do pai 
+- Peso_pai: Peso do pai 
 
 ## Preparação dos dados
 
 \begin{itemize}
-  \item Variáveis categóricas com apenas um nível
   \item Observações faltantes
   \item Observações não classificadas
   \item Observações absurdas 
-  \item Conversão d
-  \item Análise descritiva 
+  \item Conversão das variáveis Peso e Altura
+  \item 1032 observações restantes
 \end{itemize}
 
 
 ## Metodologia
 
-- Regressão liner múltipla
-- Erros padrão robustos
+- Regressão liner múltipla com erros padrão robustos
 - Padronização das variáveis contínuas
-- Reagrupou-se os niveis das variáveis não significativas ao nível de refencia do modelo
-- Novo modelo com os novos níveis
+- Nível de significância $\alpha$ = 10%
+- Reagrupamento dos níveis não significativos ao nível de referência do modelo
 - Novo modelo sem as variáveis insignificantes
-- $\alpha$ = 10%
 
-## Resultados
-
-- 5 modelos ajustados
-- Variáveis restantes: Cor do pai, Fuma, Peso e altura da mãe, Número de gestações anteriores, Tempo de gestação e Data de nascimento
-- Modelo final irredútivel, segundo o critério adotado
 
 ##Modelo final
 
-$$Peso = \beta_0 + \beta_1Fuma + \beta_2Mex + \beta_3Mixed + \beta_4White $$ \
+$$Peso = \beta_0 + \beta_1Fuma + \beta_2Mex + \beta_3Mixed + \beta_4White $$ 
 $$+ \beta_5 \left ( \frac{P-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G-\bar{G}}{\sigma_G}   \right )+ \beta_7 \left ( \frac{N-\bar{N}}{\sigma_N}   \right )$$ \ $$+ \beta_8 \left ( \frac{NG-\bar{NG}}{\sigma_{NG}}   \right ) + \beta_9 \left ( \frac{A-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon $$
 
-$\beta_0$: representa o parâmetro associado aos níveis de refência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca" (variável Fuma).   
+$\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).  
 
-
-
-##Resultados do ajuste
+## Resultados
 
 \begin{center}
-`r legenda_tab4`
+`r legenda_tab5`
 \end{center}
 
 \begin{table}[!h]
@@ -698,39 +720,46 @@ $\beta_0$: representa o parâmetro associado aos níveis de refência "Asian/Não de
   \hline
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
-(Intercept) & 3.3367 & 0.0562 & 59.36 & 0.0000 \\ 
-  FumaFuma & -0.2387 & 0.0280 & -8.52 & 0.0000 \\ 
-  Cor\_paiMex & 0.3306 & 0.1027 & 3.22 & 0.0013 \\ 
-  Cor\_paiMixed & 0.1781 & 0.0795 & 2.24 & 0.0253 \\ 
-  Cor\_paiWhite & 0.1694 & 0.0570 & 2.97 & 0.0030 \\ 
-  Cor\_maeBlack & -0.0197 & 0.0635 & -0.31 & 0.7559 \\ 
-  Peso\_mae\_kg & 0.0434 & 0.0177 & 2.46 & 0.0142 \\ 
-  Tempo\_gestacao & 0.1969 & 0.0182 & 10.83 & 0.0000 \\ 
-  Data\_nasc & 0.0282 & 0.0132 & 2.13 & 0.0333 \\ 
-  Numero\_gestacoes & 0.0499 & 0.0167 & 2.99 & 0.0029 \\ 
-  Altura\_mae\_cm & 0.0706 & 0.0170 & 4.15 & 0.0000 \\ 
+(Intercept)$(\beta_0)$ & 3.3215 & 0.0328 & 101.17 & 0.0000 \\ 
+  FumaFuma$(\beta_1)$ & -0.2390 & 0.0280 & -8.52 & 0.0000 \\ 
+  Cor\_paiMex$(\beta_2)$ & 0.3447 & 0.0944 & 3.65 & 0.0003 \\ 
+  Cor\_paiMixed$(\beta_3)$ & 0.1886 & 0.0729 & 2.59 & 0.0098 \\ 
+  Cor\_paiWhite$(\beta_4)$ & 0.1847 & 0.0359 & 5.15 & 0.0000 \\ 
+  Peso\_mae\_kg$(\beta_5)$ & 0.0428 & 0.0176 & 2.43 & 0.0151 \\ 
+  Tempo\_gestacao$(\beta_6)$ & 0.1970 & 0.0182 & 10.85 & 0.0000 \\ 
+  Data\_nasc$(\beta_7)$ & 0.0282 & 0.0132 & 2.13 & 0.0336 \\ 
+  Numero\_gestacoes$(\beta_8)$ & 0.0495 & 0.0166 & 2.99 & 0.0029 \\ 
+  Altura\_mae\_cm$(\beta_9)$ & 0.0701 & 0.0169 & 4.14 & 0.0000 \\ 
    \hline
 \end{tabular}
 \end{table}
 
 
-##
 
-\begin{center}
-`r legenda_tab6`
-\end{center}
+##Discussão
 
-\begin{table}[!h]
+As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936. 
+
+\begin{table}[]
 \centering
-\begin{tabular}{rrr}
-  \hline
- & medias & errospadrao \\ 
-  \hline
-Peso\_Mae\_Kg & 58.26 & 9.29 \\ 
-  Tempo\_gestacao & 278.83 & 15.17 \\ 
-  Data\_nasc & 1537.73 & 106.83 \\ 
-  Numero\_gestacoes & 1.91 & 1.87 \\ 
-  Altura\_mae\_cm & 162.73 & 6.47 \\ 
-   \hline
+\begin{tabular}{lcccc}
+\hline
+\multicolumn{1}{|l}{Variável}                 & \multicolumn{1}{l}{Estimativa} & \multicolumn{1}{l}{$\widehat{\beta_1}$/Estimativa} & \multicolumn{1}{l}{EP} & \multicolumn{1}{l|}{$\equiv$ Fumar} \\ \hline
+\multicolumn{1}{|l}{$Peso\_M$(kg)}            & 0.0428                         & -5.58                                              & 9.29                             & \multicolumn{1}{c|}{-51.88}              \\
+\multicolumn{1}{|l}{$T\_Gestação$ (dias)} & 0.1970                         & -1.21                                              & 15.17                            & \multicolumn{1}{c|}{-18.35}              \\
+\multicolumn{1}{|l}{$Num\_Gestações$}      & 0.0495                         & -4.83                                              & 1.87                             & \multicolumn{1}{c|}{-9.03}               \\
+\multicolumn{1}{|l}{$Altura\_M(cm)$}       & 0.0701                         & -3.41                                              & 6.47                             & \multicolumn{1}{c|}{-22.06}              \\ \hline
+                                              & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}             & \multicolumn{1}{l}{}                     \\
+                                              & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}             & \multicolumn{1}{l}{}                    
 \end{tabular}
 \end{table}
+
+##Conclusão
+
+- Diferenciação clara nas características físicas ou de estilo de vida da mãe. 
+
+- As variáveis são intrínsecas à mãe (não estão sujeitas a alterações estipuladas)
+
+##Conclusão
+
+- O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores.
