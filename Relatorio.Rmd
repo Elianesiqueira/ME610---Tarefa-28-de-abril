@@ -55,7 +55,7 @@ Guilherme Pazian  RA:160323 \break
 {\large \bf Professor: Maurício Zevallos}\\[5pt]
 \end{center}
 \vspace*{\stretch{1}}
-\centerline{\bf Campinas-SP, 28 de Abril de 2017}
+\centerline{\bf Campinas-SP, 12 de Maio de 2017}
 \vspace*{\stretch{1}}
 \end{center}
 \end{titlepage}
@@ -89,11 +89,11 @@ figs <- captioner(prefix="Figura")
 tbls <- captioner(prefix="Tabela")
 
 #legendas para as tabelas
-legenda_tab1 = tbls(name="table_1",caption = "Ajuste do primeiro modelo")
-legenda_tab2 = tbls(name="table_2",caption = "Ajuste do segundo modelo")
-legenda_tab3 = tbls(name="table_3",caption = "Ajuste do terceiro modelo")
-legenda_tab4 = tbls(name="table_4",caption = "Ajuste do quarto modelo")
-legenda_tab5 = tbls(name="table_5",caption = "Ajuste do quarto modelo")
+legenda_tab5 = tbls(name="table_1",caption = "Ajuste do quinto modelo")
+legenda_tab1 = tbls(name="table_2",caption = "Ajuste do primeiro modelo")
+legenda_tab2 = tbls(name="table_3",caption = "Ajuste do segundo modelo")
+legenda_tab3 = tbls(name="table_4",caption = "Ajuste do terceiro modelo")
+legenda_tab4 = tbls(name="table_5",caption = "Ajuste do quarto modelo")
 legenda_tab6 = tbls(name="table_6",caption = "Medidas descritivas")
 #colocar isso acima de cada tabela
 #\begin{center}
@@ -182,7 +182,7 @@ As variáveis correspondentes ao peso e altura do pai foram desconsideradas devid
 Para as demais variáveis, foram consideradas nas análises, apenas as observações com informações completas de todas as variáveis envolvidas. Passamos então, de 1236 observações (banco de dados original) para 1032 observações (banco de dados após as exclusões citadas). 
 Além disso, no banco de dados original, as variáveis correspondentes ao peso da criança, peso e altura da mãe e do pai estavam em unidades de medidas não usuais no contexto brasileiro, onça, libras e polegadas respectivamente, então foram feitas as devidas conversões para kg no caso dos pesos e centímetro no caso das alturas. 
 
-Após a adequação dos dados, foi feita uma análise descritiva, na qual foram produzidos boxplots para as variáveis categóricas e gráficos de dispersão para as variáveis contínuas e discretas. Analisando os boxplots notou-se para algumas variáveis, que alguns níveis têm distribuição muito semelhante, sugerindo a igualdade entre eles, a partir disso, os níveis que apresentaram tais características e faziam sentido em termos do problema, foram reagrupados em um mesmo nível e seus gráficos foram refeitos com as devidas alterações. As variáveis relativas ao hábito de fumar e ao tempo sem fumar, após as adequações contiveram as mesmas informações, por isso foi mantida apenas a variável relativa ao hábito de fumar.  
+Após a adequação dos dados, foi feita uma análise descritiva, na qual foram produzidos boxplots para as variáveis categóricas e gráficos de dispersão para as variáveis contínuas e discretas (Todos os gráficos se encontram em anexo). Analisando os boxplots notou-se para algumas variáveis, que alguns níveis têm distribuição muito semelhante, sugerindo a igualdade entre eles, a partir disso, os níveis que apresentaram tais características e faziam sentido em termos do problema, foram reagrupados em um mesmo nível e seus gráficos foram refeitos com as devidas alterações. As variáveis relativas ao hábito de fumar e ao tempo sem fumar, após as adequações contiveram as mesmas informações, por isso foi mantida apenas a variável relativa ao hábito de fumar.  
 
 ### 4. Metodologia
 
@@ -221,23 +221,22 @@ Por fim, um quinto modelo foi ajustado com as mesmas variáveis do modelo anterio
 
 Modelo de referência:  
 
-  $$Peso_i = \beta_0 + \beta_1Fuma_i + \beta_2Mex_i + \beta_3Mixed_i + \beta_4White_i + \beta_5 \left ( \frac{P_i-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G_i-\bar{G}}{\sigma_G} \right )$$ \\ 
+  $$Peso_i = \beta_0 + \beta_1Fuma_i + \beta_2Mex_i + \beta_3Mixed_i + \beta_4White_i + \beta_5 \left ( \frac{P_i-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G_i-\bar{G}}{\sigma_G} \right )$$ 
  $$ + \beta_7 \left ( \frac{N_i-\bar{N}}{\sigma_N}   \right )+ \beta_8 \left ( \frac{NG_i-\bar{NG}}{\sigma_{NG}}\right ) + \beta_9 \left ( \frac{A_i-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon_i $$  
 Onde:  
   
 - $\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).
 - $Fuma_i$: é a i-ésima observação da variável binária relacionada ao nível "Fuma" da variável "Fuma".
-- $Mex$: é a i-ésima observação da variável binária relacionada ao nível "Mex" da variável "Cor do Pai".  
-- $Mixed$: é a i-ésima observação da variável binária relacionada ao nível "Mixed" da variável "Cor do Pai".  
+- $Mex$: é a i-ésima observação da variável binária relacionada ao nível "Mex" da variável "Cor do Pai".
+- $Mixed$: é a i-ésima observação da variável binária relacionada ao nível "Mixed" da variável "Cor do Pai".
 - $White$: é a i-ésima observação da variável binária relacionada ao nível "White" da variável "Cor do Pai".
 - $P_i$: é o i-ésimo valor observado da variável "Peso_mae_kg".
 - $G_i$: é o i-ésimo valor observado da variável "Tempo_gestacao".
 - $N_i$: é o i-ésimo valor observado da variável "Data_nasc".
 - $NG_i$: é o i-ésimo valor observado da variável "Numero_gestacoes".
 - $A_i$: é o i-ésimo valor observado da variável "Altura_mae_cm".
-- $X = P,G,N,NG,A$.
-- $\bar{X}$ é a média observada da variável X.
-- $\sigma_X$ é o desvio padrão observado na variável X.
+- $\bar{P}, \bar{G},\bar{N},\bar{NG},\bar{A}:$ são as médias observadas para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente.
+- $\sigma_P, \sigma_G,\sigma_N,\sigma_{NG}, \sigma_A:$ são os desvios padrão observados para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente.
 - $Peso_i$: representa a i-ésima observação da variável resposta Peso.
 - $\varepsilon_i$ é i-ésimo valor observado do erro (aleatório).
 
@@ -268,7 +267,10 @@ A tabela 5 apresenta as estimativas observadas pelo ajuste do modelo:
 \end{tabular}
 \end{table}
   
-Para o modelo irredutível, as medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936.  
+Para o modelo irredutível, as medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936. 
+
+As estimativas dos modelos ajustados anteriormente, se encontram em anexo (Tabelas 1, 2, 3 e 4).
+
 
 ### 6. Discussão
 
@@ -276,9 +278,9 @@ Observamos que o modelo dito irredutível teve um poder preditivo rezoávelmente b
 
 Com base nos resultados obtidos neste estudo, observamos a variável "Cor/Raça do Pai" no modelo, a qual não é tão intuitiva para explicar o peso do bebê, porém seus coeficientes indicam uma grande influência no peso do mesmo. Contudo, como esta variável não é de interesse para sanar o objetivo deste estudo, não serão levantadas discussões sobre a relação entre "Cor/Raça do Pai" e Peso do bebê. 
 
-Segundo as estimativas do modelo, o fato da mãe da criança fumar ou não, têm grande impacto negativo quanto ao peso do bebê, por exemplo, a diferença esperada no peso do bebê de uma mãe não fumante (Nunca Fumou ou Fumava) comparada com uma mãe fumante com as mesmas características é igual à **0.2390**, valor este equivalente a **1.21** vezes o valor observado para o coeficiente referente ao "Tempo de gestação", de modo que é equivalente ao aumento em **1.21** vezes uma unidade de desvio padrão observado de Tempo de Gestação da mãe. Segundo a tabela 6 em anexo, o desvio padrão observado nos dados para a variável "Tempo de gestação" é **15.166**, ou seja, o peso esperado para o filho de uma mãe que fuma equivale ao peso esperado para o filho de uma mãe com as mesmas características, porém que não fuma e que teve aproximadamente **18** dias a menos de gestação.
+Segundo as estimativas do modelo, o fato da mãe da criança fumar ou não durante a gravidez, têm grande impacto negativo quanto ao peso do bebê, por exemplo, a diferença esperada no peso do bebê de uma mãe não fumante (Nunca Fumou ou Fumava) comparada com uma mãe fumante com as mesmas características é igual à **0.2390**, valor este equivalente a **1.21** vezes o valor observado para o coeficiente referente ao "Tempo de gestação", de modo que é equivalente ao aumento em **1.21** vezes uma unidade de desvio padrão observado de Tempo de Gestação da mãe. Segundo a tabela 6 em anexo, o desvio padrão observado nos dados para a variável "Tempo de gestação" é **15.166**, ou seja, o peso esperado para o filho de uma mãe que fuma equivale ao peso esperado para o filho de uma mãe com as mesmas características, porém que não fuma e que teve aproximadamente **18** dias a menos de gestação.
 
-Analogamente, de acordo com o modelo ajustado, levando-se em consideração as mesmas características, o fato da mãe fumar tem efeito no peso esperado do bebê equivalente ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 51,87 kg no peso da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 9,02 Gestações anteriores da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 22,05 cm na altura da mãe. Nota-se que os valores "equivalentes" ao fato da mãe fumar durante a gravidez são bastante significativos, ou seja, a redução desses valores de altura, peso, tempo de gestação e número de gestações anteriores representam, isoladamente, uma diferenciação clara nas características físicas ou de estilo de vida da mãe. Como em geral estas variáveis são intrínsecas à mãe, de maneira que não estão sujeitas a alterações estipuladas, temos uma indicação clara de que as informações obtidas através dos dados concordam com o relato no Surgeon General's Report 1989, ou seja, o fato da mãe fumar parece ser uma variável mais determinante do peso do bebê do que altura, o peso, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê.  
+Analogamente, de acordo com o modelo ajustado, levando-se em consideração as mesmas características, o fato da mãe fumar durante a gravidez tem efeito no peso esperado do bebê equivalente ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 51,87 kg no peso da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 9,02 Gestações anteriores da mãe ou ao efeito (isoladamente e mantendo-se as demais características constantes) de uma redução de 22,05 cm na altura da mãe. Nota-se que os valores "equivalentes" ao fato da mãe fumar durante a gravidez são bastante significativos, ou seja, a redução desses valores de altura, peso, tempo de gestação e número de gestações anteriores representam, isoladamente, uma diferenciação clara nas características físicas ou de estilo de vida da mãe. Como em geral estas variáveis são intrínsecas à mãe, de maneira que não estão sujeitas a alterações estipuladas, temos uma indicação clara de que as informações obtidas através dos dados concordam com o relato no Surgeon General's Report 1989, ou seja, o fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê.  
 
 
 ```{r leitura dos dados, echo=FALSE, warning=FALSE}
@@ -935,7 +937,7 @@ boxplot_Cor_pai2
 \end{center}
 \vspace{0.5cm}
 
-```{r, fig.width=7.5,fig.height=3.7}
+```{r, fig.width=7.8,fig.height=3.7}
 boxplot1_Educacao_mae
 ```
 \begin{center}
@@ -951,7 +953,7 @@ boxplot2_Educacao_mae
 `r legenda_graf12`
 \end{center}
 \vspace{0.5cm}
-```{r}
+```{r, fig.width=7.8,fig.height=3.7}
 boxplot1_Educacao_pai
 ```
 \begin{center}
@@ -1017,7 +1019,7 @@ boxplot_Fuma2
 \end{center}
 \vspace{0.5cm}
 
-```{r}
+```{r, fig.width=7.8,fig.height=3.7}
 boxplot_Tempo_sem_fumar
 ```
 
@@ -1026,7 +1028,7 @@ boxplot_Tempo_sem_fumar
 \end{center}
 \vspace{0.5cm}
 
-```{r}
+```{r, fig.width=7.8,fig.height=3.7}
 boxplot_Numero_cigarros
 ```
 \begin{center}
@@ -1195,7 +1197,6 @@ tab <- data.frame(medias,errospadrao)
 
 ```
 
-\newpage
 \begin{center}
 `r legenda_tab6`
 \end{center}
