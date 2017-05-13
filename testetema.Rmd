@@ -1,17 +1,17 @@
 ---
-title: "ME610 - EstatÌstica Aplicada"
+title: "ME610 - Estat√≠stica Aplicada"
 author: "Eliane Siqueira - RA:155233 \\ Guilherme Pazian - RA: 160323"
 institute: "Universidade Estadual de Campinas"
 date: "12 de maio de 2017"
-header-includes:
- - \usetheme{CambridgeUS}
- - \usecolortheme{seahorse}
-output: beamer_presentation
+output:
+  pdf_document:
+    includes:
+      in_header: temateste.tex
 
 ---
 
 ```{r, echo=FALSE}
-#definindo opÁıes padrıes 
+#definindo op√ß√µes padr√µes 
 knitr::opts_chunk$set(fig.width=4.5, fig.height=3.0 ,fig.path='Figs/', fig.align='center', echo=FALSE, warning=FALSE, message=FALSE)
 ```
 
@@ -48,28 +48,28 @@ legenda_tab6 = tbls(name="table_6",caption = "Medidas descritivas")
 #\end{center}
 
 #legendas para os graficos
-legenda_graf1 = figs(name="graf_1",caption = "Gr·fico de dispers„o entre o peso do bebe e peso da m„e")
-legenda_graf2 = figs(name="graf_2",caption = "Gr·fico de dispers„o entre o peso do bebe e a data de nascimento dele")
-legenda_graf3 = figs(name="graf_3",caption = "Gr·fico de dispers„o entre o peso do bebe e e o tempo de gestaÁ„o")
-legenda_graf4 = figs(name="graf_4",caption = "Gr·fico de dispers„o entre o peso do bebe e idade da m„e")
-legenda_graf5 = figs(name="graf_5",caption = "Gr·fico de dispers„o entre o peso do bebe e idade do pai")
-legenda_graf6 = figs(name="graf_6",caption = "Gr·fico de dispers„o entre o peso do bebe e a alturavda m„e")
-legenda_graf7 = figs(name="graf_7",caption = "Boxplot entre o peso do bebe e raÁa da m„e")
-legenda_graf8 = figs(name="graf_8",caption = "Boxplot entre o peso do bebe e raÁa da m„e - mudanÁas nos nÌveis")
-legenda_graf9 = figs(name="graf_9",caption = "Boxplot entre o peso do bebe e raÁa o pai")
-legenda_graf10 = figs(name="graf_10",caption = "Boxplot entre o peso do bebe e raÁa do pai - mudanÁas nos nÌveis")
-legenda_graf11 = figs(name="graf_11",caption = "Boxplot entre o peso do bebe e o nÌvel educacional da m„e")
-legenda_graf12 = figs(name="graf_12",caption = "Boxplot entre o peso do bebe e o nÌvel educacional da m„e - mudanÁas nos nÌveis")
-legenda_graf13 = figs(name="graf_13",caption = "Boxplot entre o peso do bebe e o nÌvel educacional do pai")
-legenda_graf14 = figs(name="graf_14",caption = "Boxplot entre o peso do bebe e o nÌvel educacional do pai - mudanÁas nos nÌveis")
-legenda_graf15 = figs(name="graf_15",caption = "Boxplot entre o peso do bebe e o estado civil da m„e")
-legenda_graf16 = figs(name="graf_16",caption = "Boxplot entre o peso do bebe e o estado civil da m„e - mudanÁas nos nÌveis")
-legenda_graf17 = figs(name="graf_17",caption = "Boxplot entre o peso do bebe e o renda anual da famÌlia")
-legenda_graf18 = figs(name="graf_18",caption = "Boxplot entre o peso do bebe e o h·bito de fumar" )
-legenda_graf19 = figs(name="graf_19",caption = "Boxplot entre o peso do bebe e o h·bito de fumar -mudanÁas de nÌveis" )
+legenda_graf1 = figs(name="graf_1",caption = "Gr√°fico de dispers√£o entre o peso do bebe e peso da m√£e")
+legenda_graf2 = figs(name="graf_2",caption = "Gr√°fico de dispers√£o entre o peso do bebe e a data de nascimento dele")
+legenda_graf3 = figs(name="graf_3",caption = "Gr√°fico de dispers√£o entre o peso do bebe e e o tempo de gesta√ß√£o")
+legenda_graf4 = figs(name="graf_4",caption = "Gr√°fico de dispers√£o entre o peso do bebe e idade da m√£e")
+legenda_graf5 = figs(name="graf_5",caption = "Gr√°fico de dispers√£o entre o peso do bebe e idade do pai")
+legenda_graf6 = figs(name="graf_6",caption = "Gr√°fico de dispers√£o entre o peso do bebe e a alturavda m√£e")
+legenda_graf7 = figs(name="graf_7",caption = "Boxplot entre o peso do bebe e ra√ßa da m√£e")
+legenda_graf8 = figs(name="graf_8",caption = "Boxplot entre o peso do bebe e ra√ßa da m√£e - mudan√ßas nos n√≠veis")
+legenda_graf9 = figs(name="graf_9",caption = "Boxplot entre o peso do bebe e ra√ßa o pai")
+legenda_graf10 = figs(name="graf_10",caption = "Boxplot entre o peso do bebe e ra√ßa do pai - mudan√ßas nos n√≠veis")
+legenda_graf11 = figs(name="graf_11",caption = "Boxplot entre o peso do bebe e o n√≠vel educacional da m√£e")
+legenda_graf12 = figs(name="graf_12",caption = "Boxplot entre o peso do bebe e o n√≠vel educacional da m√£e - mudan√ßas nos n√≠veis")
+legenda_graf13 = figs(name="graf_13",caption = "Boxplot entre o peso do bebe e o n√≠vel educacional do pai")
+legenda_graf14 = figs(name="graf_14",caption = "Boxplot entre o peso do bebe e o n√≠vel educacional do pai - mudan√ßas nos n√≠veis")
+legenda_graf15 = figs(name="graf_15",caption = "Boxplot entre o peso do bebe e o estado civil da m√£e")
+legenda_graf16 = figs(name="graf_16",caption = "Boxplot entre o peso do bebe e o estado civil da m√£e - mudan√ßas nos n√≠veis")
+legenda_graf17 = figs(name="graf_17",caption = "Boxplot entre o peso do bebe e o renda anual da fam√≠lia")
+legenda_graf18 = figs(name="graf_18",caption = "Boxplot entre o peso do bebe e o h√°bito de fumar" )
+legenda_graf19 = figs(name="graf_19",caption = "Boxplot entre o peso do bebe e o h√°bito de fumar -mudan√ßas de n√≠veis" )
 legenda_graf20 = figs(name="graf_20",caption = "Boxplot entre o peso do bebe e o tempo sem fumar" )
-legenda_graf21 = figs(name="graf_21",caption = "Boxplot entre o peso do bebe e o n˙mero de cigarros fumados por dia" )
-legenda_graf22 = figs(name="graf_22",caption = "Boxplot entre o peso do bebe e o n˙mero de gestaÁıes anteriores da m„e" )
+legenda_graf21 = figs(name="graf_21",caption = "Boxplot entre o peso do bebe e o n√∫mero de cigarros fumados por dia" )
+legenda_graf22 = figs(name="graf_22",caption = "Boxplot entre o peso do bebe e o n√∫mero de gesta√ß√µes anteriores da m√£e" )
 #colocar isso abaixo de cada grafico
 #\begin{center}
 #`r legenda_graf1`
@@ -84,12 +84,12 @@ dados=read.table("dados.txt", header = T)
 ```
 
 ```{r, echo=FALSE, warning=FALSE}
-#alterando nomes das vari·veis, usando uma tabela feita no excel
+#alterando nomes das vari√°veis, usando uma tabela feita no excel
 descricao<-read.csv("dados.csv", header = T, sep = ";")
 descricao<-descricao[,1:2]
 names(descricao)<-c("Original", "Nova")
 
-names(dados)<-descricao$Nova #alterando os nomes das vari·veis
+names(dados)<-descricao$Nova #alterando os nomes das vari√°veis
 
 ```
 
@@ -100,7 +100,7 @@ library(dplyr)
 dados<-dados[,-17] #excluindo a variavel Altura_pai
 dados<-dados[,-17] #excluindo a variavel Peso_pai
 
-#retirando observaÁıes desconhecidas
+#retirando observa√ß√µes desconhecidas
 dados=filter(dados,Rendimento_anual!='98')
 dados=filter(dados,Cor_mae!='99')
 dados=filter(dados,Idade_mae!='99')
@@ -114,17 +114,17 @@ dados=filter(dados,Fuma!='9')
 dados=filter(dados,Tempo_sem_fumar!='98')
 dados=filter(dados,Numero_cigarros!='98')
 dados=filter(dados,Estado_civil!='0')
-#retirando observaÁıes absurdas para tempo de gestaÁ„o
+#retirando observa√ß√µes absurdas para tempo de gesta√ß√£o
 dados=filter(dados,Tempo_gestacao<'500')
 
 ```
 
 ```{r, echo=FALSE, warning=FALSE}
 #convertendo unidade de medidas 
-#1 onÁa equivale ‡ 0,0283 quilos
+#1 on√ßa equivale √† 0,0283 quilos
 #1 libra equivale a 0,453592 quilos
-#1 polegada equivale ‡ 2,54cm
-#Peso da crianÁa
+#1 polegada equivale √† 2,54cm
+#Peso da crian√ßa
 #Peso da mae
 #Altura da mae
 
@@ -148,7 +148,7 @@ dadosapp$Cor_mae[dadosapp$Cor_mae==6]<-'Mex'
 dadosapp$Cor_mae[dadosapp$Cor_mae==7]<-'Black'
 dadosapp$Cor_mae[dadosapp$Cor_mae==8]<-'Asian'
 dadosapp$Cor_mae[dadosapp$Cor_mae==9]<-'Mixed'
-dadosapp$Cor_mae[dadosapp$Cor_mae==10]<-'N„o definido'
+dadosapp$Cor_mae[dadosapp$Cor_mae==10]<-'N√£o definido'
 #pai
 dadosapp$Cor_pai[dadosapp$Cor_pai==0]<-'White 0'
 dadosapp$Cor_pai[dadosapp$Cor_pai==1]<-'White 1'
@@ -160,7 +160,7 @@ dadosapp$Cor_pai[dadosapp$Cor_pai==6]<-'Mex'
 dadosapp$Cor_pai[dadosapp$Cor_pai==7]<-'Black'
 dadosapp$Cor_pai[dadosapp$Cor_pai==8]<-'Asian'
 dadosapp$Cor_pai[dadosapp$Cor_pai==9]<-'Mixed'
-dadosapp$Cor_pai[dadosapp$Cor_pai==10]<-'N„o definido'
+dadosapp$Cor_pai[dadosapp$Cor_pai==10]<-'N√£o definido'
 
 dadosapp$Educacao_mae[dadosapp$Educacao_mae==0]<-'Less than 8th grade'
 dadosapp$Educacao_mae[dadosapp$Educacao_mae==1]<-'8th-12th'
@@ -182,7 +182,7 @@ dadosapp$Educacao_pai[dadosapp$Educacao_pai==6|dadosapp$Educacao_pai==7]<-'Trade
 dadosapp$Estado_civil[dadosapp$Estado_civil==1]<-'Casado'
 dadosapp$Estado_civil[dadosapp$Estado_civil==2]<- 'Legalmente separado'
 dadosapp$Estado_civil[dadosapp$Estado_civil==3]<-'Divorciado'
-dadosapp$Estado_civil[dadosapp$Estado_civil==4]<-'Vi˙vo'
+dadosapp$Estado_civil[dadosapp$Estado_civil==4]<-'Vi√∫vo'
 dadosapp$Estado_civil[dadosapp$Estado_civil==5]<-'Nunca casado'
   
 dadosapp$Rendimento_anual[dadosapp$Rendimento_anual==0] <-'<2500'
@@ -193,7 +193,7 @@ dadosapp$Rendimento_anual[dadosapp$Rendimento_anual==9]<-'>15000'
 
 dadosapp$Fuma[dadosapp$Fuma==0]<-'Nunca'
 dadosapp$Fuma[dadosapp$Fuma==1]<-'Fuma agora'
-dadosapp$Fuma[dadosapp$Fuma==2]<-'atÈ a gravidez atual'
+dadosapp$Fuma[dadosapp$Fuma==2]<-'at√© a gravidez atual'
 dadosapp$Fuma[dadosapp$Fuma==3]<- 'uma vez apenas'
 
 write.csv(dados, file="dados_app.csv")
@@ -202,20 +202,20 @@ write.csv(dados, file="dados_app.csv")
 
 
 ```{r}
-#boxplot1 EducaÁ„o m„e
+#boxplot1 Educa√ß√£o m√£e
 
 
-dadosBoxplot1_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "EducaÁ„o_mae"
+dadosBoxplot1_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "Educa√ß√£o_mae"
 dadosBoxplot1_Educacao_mae$Educacao_mae<- factor(dadosBoxplot1_Educacao_mae$Educacao_mae,ordered = T)
 levels(dadosBoxplot1_Educacao_mae$Educacao_mae)<- c('Less than 8th grade','8th - 12th grade','HS graduate','HS+trade','HS+some college','College graduate','Trade school HS unclear')
 
-boxplot1_Educacao_mae <- ggplot(data = dadosBoxplot1_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebÍ por EducaÁ„o da m„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
+boxplot1_Educacao_mae <- ggplot(data = dadosBoxplot1_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do beb√™ por Educa√ß√£o da m√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
 
 ```
 
 ```{r}
-#Juntando alguns nÌveis do fator "EducaÁ„o M„e"
-#retirando alguns niveis pois para "0" sÛ temos 8 obs, e para "7" temos apenas 6 obs e a descriÁ„o de 6 e 7 È a mesma
+#Juntando alguns n√≠veis do fator "Educa√ß√£o M√£e"
+#retirando alguns niveis pois para "0" s√≥ temos 8 obs, e para "7" temos apenas 6 obs e a descri√ß√£o de 6 e 7 √© a mesma
 #'Less than 12th grade'
 dados$Educacao_mae[dados$Educacao_mae==0|dados$Educacao_mae==1]<-0 
 #'Trade'
@@ -230,29 +230,29 @@ dados$Educacao_mae[dados$Educacao_mae==5]<-4
 
 
 ```{r}
-#Boxplot2 EducaÁ„o M„e
-dadosBoxplot2_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "EducaÁ„o_mae"
+#Boxplot2 Educa√ß√£o M√£e
+dadosBoxplot2_Educacao_mae<- dados[,c(22,11)] #pegando as va "peso_kg" e "Educa√ß√£o_mae"
 dadosBoxplot2_Educacao_mae$Educacao_mae<- factor(dadosBoxplot2_Educacao_mae$Educacao_mae,ordered = T)
 levels(dadosBoxplot2_Educacao_mae$Educacao_mae)<- c('Less than 12th grade','Trade','HS graduate','HS+some college','College graduate')
 
-boxplot2_Educacao_mae <- ggplot(data = dadosBoxplot2_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do bebÍ por EducaÁ„o da m„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot2_Educacao_mae <- ggplot(data = dadosBoxplot2_Educacao_mae,aes(x=Educacao_mae, y=Peso_kg))+geom_boxplot(aes(group=Educacao_mae),outlier.colour = "red")+labs(title="Peso do beb√™ por Educa√ß√£o da m√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 ```
 
 ```{r}
-#boxplot1 EducaÁ„o Pai
+#boxplot1 Educa√ß√£o Pai
 
 
-dadosBoxplot1_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "EducaÁ„o_pai"
+dadosBoxplot1_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "Educa√ß√£o_pai"
 dadosBoxplot1_Educacao_pai$Educacao_pai<- factor(dadosBoxplot1_Educacao_pai$Educacao_pai,ordered = T)
 levels(dadosBoxplot1_Educacao_pai$Educacao_pai)<- c('Less than 8th grade','8th - 12th grade','HS graduate','HS+trade','HS+some college','College graduate','Trade school HS unclear6','Trade school HS unclear7')
 
-boxplot1_Educacao_pai <- ggplot(data = dadosBoxplot1_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebÍ por EducaÁ„o da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
+boxplot1_Educacao_pai <- ggplot(data = dadosBoxplot1_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do beb√™ por Educa√ß√£o da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") 
 
 ```
 
 ```{r}
-#Juntando alguns nÌveis do fator "EducaÁ„o Pai"
-#retirando alguns niveis pois para "7" temos apenas 5 obs, "6" temos apenas 1 obs e a descriÁ„o de 6 e 7 È a mesma.
+#Juntando alguns n√≠veis do fator "Educa√ß√£o Pai"
+#retirando alguns niveis pois para "7" temos apenas 5 obs, "6" temos apenas 1 obs e a descri√ß√£o de 6 e 7 √© a mesma.
 #'Less than 8th grade'
 dados$Educacao_pai[dados$Educacao_pai==0]<-0
 #'8th - 12th grade'
@@ -268,12 +268,12 @@ dados$Educacao_pai[dados$Educacao_pai==5]<-4
 ```
 
 ```{r}
-#Boxplot2 EducaÁ„o Pai
-dadosBoxplot2_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "EducaÁ„o_pai"
+#Boxplot2 Educa√ß√£o Pai
+dadosBoxplot2_Educacao_pai<- dados[,c(22,16)] #pegando as va "peso_kg" e "Educa√ß√£o_pai"
 dadosBoxplot2_Educacao_pai$Educacao_pai<- factor(dadosBoxplot2_Educacao_pai$Educacao_pai,ordered = T)
 levels(dadosBoxplot2_Educacao_pai$Educacao_pai)<- c('Less than 8th grade','8th - 12th grade','Trade','HS graduate','HS+some college','College graduate')
 
-boxplot2_Educacao_pai <- ggplot(data = dadosBoxplot2_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do bebÍ por EducaÁ„o da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot2_Educacao_pai <- ggplot(data = dadosBoxplot2_Educacao_pai,aes(x=Educacao_pai, y=Peso_kg))+geom_boxplot(aes(group=Educacao_pai),outlier.colour = "red")+labs(title="Peso do beb√™ por Educa√ß√£o da Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 ```
 
 
@@ -284,14 +284,14 @@ dados$Estado_civil[dados$Estado_civil==2]<-'Separado Legalmente'
 dados$Estado_civil[dados$Estado_civil==3]<-'Divorciado'
 dados$Estado_civil[dados$Estado_civil==5]<-'Nunca Casou'
 
-boxplot1_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebÍ por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot1_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do beb√™ por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 
-#juntando as categorias "Divorciado" e "Nunca Casou" pois estas tem 2 e 3 obs com a "Separado Legalmente" que tem 11 obs. O total È 16.
+#juntando as categorias "Divorciado" e "Nunca Casou" pois estas tem 2 e 3 obs com a "Separado Legalmente" que tem 11 obs. O total √© 16.
 
 dados$Estado_civil[dados$Estado_civil=='Separado Legalmente'|dados$Estado_civil== 'Divorciado'|dados$Estado_civil=='Nunca Casou']<- 'Nao Casada'
 
-boxplot2_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do bebÍ por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot2_Estado_civil <- ggplot(data = dados,aes(x=Estado_civil, y=Peso_kg))+geom_boxplot(aes(group=Estado_civil),outlier.colour = "red")+labs(title="Peso do beb√™ por Estado civil")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 ```
 
 
@@ -311,42 +311,42 @@ dadosBoxplot1_Rendimento_anual <- dados[,c(22,18)]
 dadosBoxplot1_Rendimento_anual$Rendimento_anual<-factor(dadosBoxplot1_Rendimento_anual$Rendimento_anual,levels=c('<2500','2500-4999','5000-12499','12500-15000','>15000'),ordered = TRUE)
 
 
-boxplot_Rendimento_anual <- ggplot(data = dadosBoxplot1_Rendimento_anual,aes(x=Rendimento_anual, y=Peso_kg))+geom_boxplot(aes(group=Rendimento_anual),outlier.colour = "red")+labs(title="Peso do bebÍ por Rendimento Anual")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot_Rendimento_anual <- ggplot(data = dadosBoxplot1_Rendimento_anual,aes(x=Rendimento_anual, y=Peso_kg))+geom_boxplot(aes(group=Rendimento_anual),outlier.colour = "red")+labs(title="Peso do beb√™ por Rendimento Anual")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 ```
 
 
 ```{r}
 
-dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Peso da m„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_pesomae=ggplot(data = dados, aes(x=Peso_mae_kg, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Peso da m√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 ```{r}
-dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Data de nascimento")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Data_nasc=ggplot(data = dados, aes(x=Data_nasc, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Data de nascimento")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
-
-```
-
-
-```{r}
-dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Tempo de gestacao")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
-
-```
-
-```{r}
-dispersao_peso_Idade_mae=ggplot(data = dados, aes(x=Idade_mae, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Idade da M„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 
 ```{r}
-dispersao_peso_Idade_pai=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Idade do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Tempo_gestacao=ggplot(data = dados, aes(x=Tempo_gestacao, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Tempo de gestacao")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+
+```
+
+```{r}
+dispersao_peso_Idade_mae=ggplot(data = dados, aes(x=Idade_mae, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Idade da M√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 
 ```{r}
-dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+geom_point()+labs(title="Peso do bebÍ por Altura da M„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+dispersao_peso_Idade_pai=ggplot(data = dados, aes(x=Idade_pai, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Idade do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+
+```
+
+
+```{r}
+dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+geom_point()+labs(title="Peso do beb√™ por Altura da M√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
@@ -354,7 +354,7 @@ dispersao_peso_Altura_mae=ggplot(data = dados, aes(x=Altura_mae_cm, y=Peso_kg))+
 ```{r, echo=FALSE, warning=FALSE}
 #boxplot Cor_mae antes de juntar 0 a 5
 library(ggplot2)
-boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebÍ por Cor da m„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_mae <- ggplot(data = dados,aes(x=Cor_mae, y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do beb√™ por Cor da m√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
 
 
 #dados para boxplot juntando 0 a 5
@@ -363,17 +363,17 @@ dados$Cor_mae[dados$Cor_mae==6]<-'Mex'
 dados$Cor_mae[dados$Cor_mae==7]<-'Black'
 dados$Cor_mae[dados$Cor_mae==8]<-'Asian'
 dados$Cor_mae[dados$Cor_mae==9]<-'Mixed'
-dados$Cor_mae[dados$Cor_mae==10]<-'N„o Definido'
+dados$Cor_mae[dados$Cor_mae==10]<-'N√£o Definido'
 #bloxplot para peso por cor_mae juntanto 0 a 5
 
-boxplot_Cor_mae2=ggplot(data=dados,aes(x=Cor_mae,y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do bebÍ por Cor da m„e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
+boxplot_Cor_mae2=ggplot(data=dados,aes(x=Cor_mae,y=Peso_kg))+geom_boxplot(aes(group=Cor_mae),outlier.colour = "red")+labs(title="Peso do beb√™ por Cor da m√£e")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
 
 
 ```
 
 ```{r}
 #boxplot do peso por Cor_pai
-boxplot_Cor_pai <- ggplot(data = dados,aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do bebÍ por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
+boxplot_Cor_pai <- ggplot(data = dados,aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do beb√™ por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5)) + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9,10),labels=c("White(0)","White(1)","White(2)","White(3)","White(4)","White(5)","Mex(6)","Black(7)","Asian(8)","Mixed(9)","?"))
 
 #dados para boxplot juntando 0 a 5
 dados$Cor_pai[dados$Cor_pai==0|dados$Cor_pai==1|dados$Cor_pai==2|dados$Cor_pai==3|dados$Cor_pai==4|dados$Cor_pai==5]<-'White'
@@ -381,10 +381,10 @@ dados$Cor_pai[dados$Cor_pai==6]<-'Mex'
 dados$Cor_pai[dados$Cor_pai==7]<-'Black'
 dados$Cor_pai[dados$Cor_pai==8]<-'Asian'
 dados$Cor_pai[dados$Cor_pai==9]<-'Mixed'
-dados$Cor_pai[dados$Cor_pai==10]<-'N„o Definido'
+dados$Cor_pai[dados$Cor_pai==10]<-'N√£o Definido'
 #bloxplot para peso por cor_mae juntanto 0 a 5
 
-boxplot_Cor_pai2=ggplot(data=dados, aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do bebÍ por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
+boxplot_Cor_pai2=ggplot(data=dados, aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(group=Cor_pai),outlier.colour = "red")+labs(title="Peso do beb√™ por Cor do Pai")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))
 
 
 ```
@@ -392,11 +392,11 @@ boxplot_Cor_pai2=ggplot(data=dados, aes(x=Cor_pai, y=Peso_kg))+geom_boxplot(aes(
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Fuma
-boxplot_Fuma <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do bebÍ por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3),labels=c("Nunca","Fuma agora","AtÈ a gravidez atual","Fumava, mas parou"))
+boxplot_Fuma <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do beb√™ por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3),labels=c("Nunca","Fuma agora","At√© a gravidez atual","Fumava, mas parou"))
 
 dados$Fuma[dados$Fuma==2|dados$Fuma==3]<-2
 
-boxplot_Fuma2 <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do bebÍ por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")+ scale_x_discrete(limits= c(0,1,2),labels=c("Nunca","Fuma agora","AtÈ a gravidez atual/Fumava, mas parou"))
+boxplot_Fuma2 <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(group=Fuma),outlier.colour = "red")+labs(title="Peso do beb√™ por Fuma")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")+ scale_x_discrete(limits= c(0,1,2),labels=c("Nunca","Fuma agora","At√© a gravidez atual/Fumava, mas parou"))
 
 
 ```
@@ -404,38 +404,38 @@ boxplot_Fuma2 <- ggplot(data = dados,aes(x=Fuma, y=Peso_kg))+geom_boxplot(aes(gr
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Tempo_sem_fumar
-boxplot_Tempo_sem_fumar <- ggplot(data = dados,aes(x=Tempo_sem_fumar, y=Peso_kg))+geom_boxplot(aes(group=Tempo_sem_fumar),outlier.colour = "red")+labs(title="Peso do bebÍ por Tempo sem fumar")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("never smoked", "still smokes","during current preg", "within 1 yr", "1 to 2 years ago", "2 to 3 yr ago", "3 to 4 yrs ago", "5 to 9yrs ago", "10+yrs ago", "quit and don't know"))
+boxplot_Tempo_sem_fumar <- ggplot(data = dados,aes(x=Tempo_sem_fumar, y=Peso_kg))+geom_boxplot(aes(group=Tempo_sem_fumar),outlier.colour = "red")+labs(title="Peso do beb√™ por Tempo sem fumar")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("never smoked", "still smokes","during current preg", "within 1 yr", "1 to 2 years ago", "2 to 3 yr ago", "3 to 4 yrs ago", "5 to 9yrs ago", "10+yrs ago", "quit and don't know"))
 
 ```
 
 
 ```{r,echo=FALSE, warning=FALSE, fig.width=6.5}
 #boxplot do peso por Numero_cigarros
-boxplot_Numero_cigarros <- ggplot(data = dados,aes(x=Numero_cigarros, y=Peso_kg))+geom_boxplot(aes(group=Numero_cigarros),outlier.colour = "red")+labs(title="Peso do bebÍ por Numero cigarros")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("never smoked", "still smokes","during current preg", "within 1 yr", "1 to 2 years ago", "2 to 3 yr ago", "3 to 4 yrs ago", "5 to 9yrs ago", "10+yrs ago", "quit and don't know"))
+boxplot_Numero_cigarros <- ggplot(data = dados,aes(x=Numero_cigarros, y=Peso_kg))+geom_boxplot(aes(group=Numero_cigarros),outlier.colour = "red")+labs(title="Peso do beb√™ por Numero cigarros")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none") + scale_x_discrete(limits= c(0,1,2,3,4,5,6,7,8,9),labels=c("never smoked", "still smokes","during current preg", "within 1 yr", "1 to 2 years ago", "2 to 3 yr ago", "3 to 4 yrs ago", "5 to 9yrs ago", "10+yrs ago", "quit and don't know"))
 
 ```
 
 ```{r,echo=FALSE, warning=FALSE}
 #boxplot do peso por Numero_gestacoes
-boxplot_Numero_gestacoes <- ggplot(data = dados,aes(x=Numero_gestacoes, y=Peso_kg))+geom_boxplot(aes(group=Numero_gestacoes),outlier.colour = "red")+labs(title="Peso do bebÍ por Numero gestaÁıes")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
+boxplot_Numero_gestacoes <- ggplot(data = dados,aes(x=Numero_gestacoes, y=Peso_kg))+geom_boxplot(aes(group=Numero_gestacoes),outlier.colour = "red")+labs(title="Peso do beb√™ por Numero gesta√ß√µes")+theme_classic()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")
 
 ```
 
 
 ```{r}
-#transformando as vari·veis categÛricas em fator
+#transformando as vari√°veis categ√≥ricas em fator
 dados2<-dados
 dados2$Educacao_mae <- factor(dados2$Educacao_mae,ordered= T)
 dados2$Educacao_pai <- factor(dados2$Educacao_pai,ordered= T)
 dados2$Estado_civil <- factor(dados2$Estado_civil,ordered= T)
-#trocando cÛdigos por nomes para facilitar a interpretÁ„o no modelo
+#trocando c√≥digos por nomes para facilitar a interpret√ß√£o no modelo
 dados2$Rendimento_anual <- factor(dados2$Rendimento_anual)
-#trocando cÛdigos por nomes para facilitar a interpretÁ„o no modelo
+#trocando c√≥digos por nomes para facilitar a interpret√ß√£o no modelo
 dados2$Fuma[dados2$Fuma==0]<-'0-Nunca'
 dados2$Fuma[dados2$Fuma==1]<-'Fuma'
 dados2$Fuma[dados2$Fuma==2]<-'Fumava'
 #####
-#trocando cÛdigos por nomes para facilitar a interpretÁ„o no modelo
+#trocando c√≥digos por nomes para facilitar a interpret√ß√£o no modelo
 dados2$Numero_cigarros[dados2$Numero_cigarros==0]<-'0-Nunca'
 dados2$Numero_cigarros[dados2$Numero_cigarros==1]<-'1-4'
 dados2$Numero_cigarros[dados2$Numero_cigarros==2]<-'5-9'
@@ -445,11 +445,11 @@ dados2$Numero_cigarros[dados2$Numero_cigarros==5]<-'20-29'
 dados2$Numero_cigarros[dados2$Numero_cigarros==6]<-'30-39'
 dados2$Numero_cigarros[dados2$Numero_cigarros==7]<-'40-60'
 dados2$Numero_cigarros[dados2$Numero_cigarros==8]<-'60+'
-dados2$Numero_cigarros[dados2$Numero_cigarros==9]<-'N„o Sabe'
+dados2$Numero_cigarros[dados2$Numero_cigarros==9]<-'N√£o Sabe'
 
 #dados2$Tempo_sem_fumar <- factor(dados2$Tempo_sem_fumar)
 #####
-#trocando cÛdigos por nomes para facilitar a interpretÁ„o no modelo
+#trocando c√≥digos por nomes para facilitar a interpret√ß√£o no modelo
 
 dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==0]<-'0-Nunca'
 dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==1]<-'Fuma Agora'
@@ -460,8 +460,8 @@ dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==5]<-'2-3'
 dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==6]<-'3-4'
 dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==7]<-'5-9'
 dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==8]<-'10+'
-dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==9]<-'N„o Sabe'
-#padronizando as vari·veis contÌnuas
+dados2$Tempo_sem_fumar[dados2$Tempo_sem_fumar==9]<-'N√£o Sabe'
+#padronizando as vari√°veis cont√≠nuas
 standard <- function(x){
   xbar <- mean(x)
   s <- sd(x)
@@ -522,8 +522,8 @@ coefrob_fit1 <- coeftest(fit1, epfit1robusto)
 
 ```{r}
 dados2$Fuma[dados2$Fuma=='0-Nunca'|dados2$Fuma=='Fumava']<-'0-Nunca/Fumava'
-dados2$Cor_pai[dados2$Cor_pai=='Asian'|dados2$Cor_pai=='N„o Definido']<-'Asian/N„o definido'
-dados2$Cor_mae[dados2$Cor_mae=='Asian'|dados2$Cor_mae=='Mex'|dados2$Cor_mae=='Mixed'|dados2$Cor_mae=='N„o Definido']<-'Asian/Mex/Mixed/Naodefinido'
+dados2$Cor_pai[dados2$Cor_pai=='Asian'|dados2$Cor_pai=='N√£o Definido']<-'Asian/N√£o definido'
+dados2$Cor_mae[dados2$Cor_mae=='Asian'|dados2$Cor_mae=='Mex'|dados2$Cor_mae=='Mixed'|dados2$Cor_mae=='N√£o Definido']<-'Asian/Mex/Mixed/Naodefinido'
 
 ```
 
@@ -550,7 +550,7 @@ coefrob_fit2 <- coeftest(fit2, epfit2robusto)
 
 
 ```{r}
-dados2$Cor_pai[dados2$Cor_pai=='Black'|dados2$Cor_pai=='Asian/N„o definido']<-'Asian/N„o definido/Black'
+dados2$Cor_pai[dados2$Cor_pai=='Black'|dados2$Cor_pai=='Asian/N√£o definido']<-'Asian/N√£o definido/Black'
 dados2$Cor_mae[dados2$Cor_mae=='White'|dados2$Cor_mae=='Asian/Mex/Mixed/Naodefinido']<-'Asian/Mex/Mixed/Naodefinido/White'
 ```
 
@@ -579,7 +579,6 @@ fit4 <- lm(Peso_kg~ Fuma + Cor_pai + Peso_mae_kg+Tempo_gestacao+Data_nasc+Numero
 
 r2_fit4 <- summary(fit4)$r.squared
 r2aj_fit4 <- summary(fit4)$adj.r.squared
-
 ```
 
 
@@ -618,105 +617,96 @@ coef4=coefrob_fit4
 #xtable(coefrob_fit4)
 ```
 
-##Sum·rio
+##Sum√°rio
 \begin{enumerate}
   \item Objetivo
   \item Banco de dados
-  \item PreparaÁ„o dos dados
+  \item Prepara√ß√£o dos dados
   \item Metodologia
   \item Resultados
-  \item Discuss„o
-  \item Conclus„o
+  \item Discuss√£o
+  \item Conclus√£o
 \end{enumerate}
-
-##Objetivo
-
-O objetivo deste trabalho È verificar a v·lidade desta opini„o:
-
-"O tabagismo parece ser um determinante mais significativo do peso ao nascer do que a altura, o peso da m„e, o n˙mero de fetos, a renda anual da m„e, o histÛrico de resultados de gestaÁıes anteriores ou o sexo do bebÍ. A reduÁ„o do peso ao nascer associada ao h·bito de fumar parece ser um efeito direto do tabagismo sobre o crescimento fetal."  
 
 ##Banco de dados
 
-Os dados correspondem a informaÁıes de um ano de estudo. M„es foram entrevistadas durante a gravidez para coletar informaÁıes de outras vari·veis que tem influÍncia sobre o peso das crianÁas.
+Os dados correspondem a informa√ß√µes de um ano de estudo. M√£es foram entrevistadas durante a gravidez para coletar informa√ß√µes de outras vari√°veis que tem influ√™ncia sobre o peso das crian√ßas.
 
 \begin{itemize}
   \item 1236 nascimentos
-  \item CrianÁas nascidas entre 1960 e 1967
-  \item 22 vari·veis de interesse
+  \item Crian√ßas nascidas entre 1960 e 1967
+  \item 22 vari√°veis de interesse
 \end{itemize}
 
 ```{r}
-#vari·veis
+#vari√°veis
 
 variaveis<-read.csv("variaveisporcategoria.csv", header = T, sep = ",")
 ```
 
 
-##Banco de dados - Vari·veis CategÛricas
+##Banco de dados - Vari√°veis Categ√≥ricas
 
 
-- Cor_mae: RaÁa da m„e (5 nÌveis) 
-- Educacao_mae: NÌvel educacional da m„e (7 nÌveis) 
-- Cor_pai: RaÁa do pai (5 nÌveis)
-- Educacao_pai: NÌvel educacional do pai (7 nÌveis) 
-- Estado_civil: Estado civil dos pais (5 nÌveis) 
-- Rendimento_anual: Rendimento anual familiar (5 nÌveis) 
-- Fuma: A m„e fuma? (4 nÌveis) 
-- Tempo_sem_fumar: Se a m„e parou de fumar (9 nÌveis) 
-- Numero_cigarros: N˙mero de cigarros fumados por dia (9 nÌveis)
+- Cor_mae: Ra√ßa da m√£e (5 n√≠veis) 
+- Educacao_mae: N√≠vel educacional da m√£e (7 n√≠veis) 
+- Cor_pai: Ra√ßa do pai (5 n√≠veis)
+- Educacao_pai: N√≠vel educacional do pai (7 n√≠veis) 
+- Estado_civil: Estado civil dos pais (5 n√≠veis) 
+- Rendimento_anual: Rendimento anual familiar (5 n√≠veis) 
+- Fuma: A m√£e fuma? (4 n√≠veis) 
+- Tempo_sem_fumar: Se a m√£e parou de fumar (9 n√≠veis) 
+- Numero_cigarros: N√∫mero de cigarros fumados por dia (9 n√≠veis)
 
 
-##Banco de dados - Vari·veis ContÌnuas e discretas
+##Banco de dados - Vari√°veis Cont√≠nuas e discretas
 
 
-- Peso: Peso do bebÍ
-- Altura_mae: Altura da m„e 
-- Peso_mae: Peso da m„e 
+- Peso: Peso do beb√™
+- Altura_mae: Altura da m√£e 
+- Peso_mae: Peso da m√£e 
 - Data_nasc: Data de nascimento 
-- Tempo_gestacao: DuraÁ„o da gestaÁ„o 
-- Numero_gestacoes: Numero de gestaÁıes anteriores 
-- Idade_mae: Idade da m„e
+- Tempo_gestacao: Dura√ß√£o da gesta√ß√£o 
+- Numero_gestacoes: Numero de gesta√ß√µes anteriores 
+- Idade_mae: Idade da m√£e
 - Idade_pai: Idade do pai
 
 
-##Banco de dados - Vari·veis Descartadas
+##Banco de dados - Vari√°veis Descartadas
 
 - Qtd_feto: Quantidade de fetos  
-- Vivo: Nascido vivo ou n„o 
-- Sexo: Sexo do bebÍ 
-- Peso: Peso do bebÍ  
+- Vivo: Nascido vivo ou n√£o 
+- Sexo: Sexo do beb√™ 
+- Peso: Peso do beb√™  
 - Altura_pai: Altura do pai 
 - Peso_pai: Peso do pai 
 
-## PreparaÁ„o dos dados
+## Prepara√ß√£o dos dados
 
 \begin{itemize}
-  \item ObservaÁıes faltantes
-  \item ObservaÁıes n„o classificadas
-  \item ObservaÁıes absurdas 
-  \item Convers„o das vari·veis Peso e Altura
-  \item 1032 observaÁıes restantes
+  \item Observa√ß√µes faltantes
+  \item Observa√ß√µes n√£o classificadas
+  \item Observa√ß√µes absurdas 
+  \item Convers√£o das vari√°veis Peso e Altura
+  \item 1032 observa√ß√µes restantes
 \end{itemize}
 
 
 ## Metodologia
 
-- Regress„o liner m˙ltipla com erros padr„o robustos
-- PadronizaÁ„o das vari·veis contÌnuas
-- NÌvel de signific‚ncia $\alpha$ = 10%
-- Reagrupamento dos nÌveis n„o significativos ao nÌvel de referÍncia do modelo
-- Novo modelo sem as vari·veis insignificantes
+- Regress√£o liner m√∫ltipla com erros padr√£o robustos
+- Padroniza√ß√£o das vari√°veis cont√≠nuas
+- N√≠vel de signific√¢ncia $\alpha$ = 10%
+- Reagrupamento dos n√≠veis n√£o significativos ao n√≠vel de refer√™ncia do modelo
+- Novo modelo sem as vari√°veis insignificantes
 
-##
-P, G, N, NG, A: s„o os valores observados para as vari·veis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente.
 
 ##Modelo final
 
 $$Peso = \beta_0 + \beta_1Fuma + \beta_2Mex + \beta_3Mixed + \beta_4White $$ 
 $$+ \beta_5 \left ( \frac{P-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G-\bar{G}}{\sigma_G}   \right )+ \beta_7 \left ( \frac{N-\bar{N}}{\sigma_N}   \right )$$ \ $$+ \beta_8 \left ( \frac{NG-\bar{NG}}{\sigma_{NG}}   \right ) + \beta_9 \left ( \frac{A-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon $$
 
-$\beta_0$: representa o par‚metro associado aos nÌveis de referÍncia "Asian/N„o definido/Black" (vari·vel Cor Pai) e 
-"Nunca/Fumava" (vari·vel Fuma).  
+$\beta_0$: representa o par√¢metro associado aos n√≠veis de refer√™ncia "Asian/N√£o definido/Black" (vari√°vel Cor Pai) e "Nunca/Fumava" (vari√°vel Fuma).  
 
 ## Resultados
 
@@ -746,7 +736,7 @@ $\beta_0$: representa o par‚metro associado aos nÌveis de referÍncia "Asian/N„o 
 
 
 
-##Discuss„o
+##Discuss√£o
 
 As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936. 
 
@@ -754,22 +744,22 @@ As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936.
 \centering
 \begin{tabular}{lcccc}
 \hline
-\multicolumn{1}{|l}{Vari·vel}                 & \multicolumn{1}{l}{Estimativa} & \multicolumn{1}{l}{$\widehat{\beta_1}$/Estimativa} & \multicolumn{1}{l}{EP} & \multicolumn{1}{l|}{$\equiv$ Fumar} \\ \hline
+\multicolumn{1}{|l}{Vari√°vel}                 & \multicolumn{1}{l}{Estimativa} & \multicolumn{1}{l}{$\widehat{\beta_1}$/Estimativa} & \multicolumn{1}{l}{EP} & \multicolumn{1}{l|}{$\equiv$ Fumar} \\ \hline
 \multicolumn{1}{|l}{$Peso\_M$(kg)}            & 0.0428                         & -5.58                                              & 9.29                             & \multicolumn{1}{c|}{-51.88}              \\
-\multicolumn{1}{|l}{$T\_GestaÁ„o$ (dias)} & 0.1970                         & -1.21                                              & 15.17                            & \multicolumn{1}{c|}{-18.35}              \\
-\multicolumn{1}{|l}{$Num\_GestaÁıes$}      & 0.0495                         & -4.83                                              & 1.87                             & \multicolumn{1}{c|}{-9.03}               \\
+\multicolumn{1}{|l}{$T\_Gesta√ß√£o$ (dias)} & 0.1970                         & -1.21                                              & 15.17                            & \multicolumn{1}{c|}{-18.35}              \\
+\multicolumn{1}{|l}{$Num\_Gesta√ß√µes$}      & 0.0495                         & -4.83                                              & 1.87                             & \multicolumn{1}{c|}{-9.03}               \\
 \multicolumn{1}{|l}{$Altura\_M(cm)$}       & 0.0701                         & -3.41                                              & 6.47                             & \multicolumn{1}{c|}{-22.06}              \\ \hline
                                               & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}             & \multicolumn{1}{l}{}                     \\
                                               & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}             & \multicolumn{1}{l}{}                    
 \end{tabular}
 \end{table}
 
-##Conclus„o
+##Conclus√£o
 
-- DiferenciaÁ„o clara nas caracterÌsticas fÌsicas ou de estilo de vida da m„e. 
+- Diferencia√ß√£o clara nas caracter√≠sticas f√≠sicas ou de estilo de vida da m√£e. 
 
-- As vari·veis s„o intrÌnsecas ‡ m„e (n„o est„o sujeitas a alteraÁıes estipuladas)
+- As vari√°veis s√£o intr√≠nsecas √† m√£e (n√£o est√£o sujeitas a altera√ß√µes estipuladas)
 
-##Conclus„o
+##Conclus√£o
 
-- O fato da m„e fumar durante a gravidez parece ser uma vari·vel mais determinante do peso do bebÍ do que altura, o peso, a renda anual da m„e e o histÛrico de resultados de gestaÁıes anteriores.
+- O fato da m√£e fumar durante a gravidez parece ser uma vari√°vel mais determinante do peso do beb√™ do que altura, o peso, a renda anual da m√£e e o hist√≥rico de resultados de gesta√ß√µes anteriores.
