@@ -4,9 +4,9 @@ author: "Eliane Siqueira - RA:155233 \\ Guilherme Pazian - RA: 160323"
 institute: "Universidade Estadual de Campinas"
 date: "12 de maio de 2017"
 header-includes:
- - \usetheme{Madrid}
- - \usecolortheme{dolphin}
- - \usefonttheme{structureitalicserif}
+ - \usetheme{Boadilla}
+ - \usecolortheme{spruce}
+ - \usefonttheme{structurebold}
  - \usepackage{graphicx,url}
  - \pgfdeclareimage[height= 1.0cm, width=2.5cm]{logo}{logoimeccunicamp.png}
  - \logo{\pgfuseimage{logo}}
@@ -641,36 +641,32 @@ coef4=coefrob_fit4
 
 ##Objetivo
 
+\begin{block}{Título}
+
 O objetivo deste trabalho é verificar a válidade desta opinião:
 
 "O tabagismo parece ser um determinante mais significativo do peso ao nascer do que a altura, o peso da mãe, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê. A redução do peso ao nascer associada ao hábito de fumar parece ser um efeito direto do tabagismo sobre o crescimento fetal."  
 
+\end{block}
 
 ## Metodologia
 
-- Regressão liner múltipla com erros padrão robustos
-- Padronização das variáveis contínuas
-- Nível de significância $\alpha$ = 10%
-- Reagrupamento dos níveis não significativos ao nível de referência do modelo
-- Novo modelo sem as variáveis insignificantes
+- Regressão liner múltipla com erros padrão robustos;\pause
+- Padronização das variáveis contínuas; \pause
+- Nível de significância $\alpha$ = 10%; \pause
+- Reagrupamento dos níveis não significativos ao nível de referência do modelo; \pause
+- Novo modelo sem as variáveis insignificantes; \pause
 
-##
-P, G, N, NG, A: são os valores observados para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente.
 
 ##Modelo final
 
 $$Peso = \beta_0 + \beta_1Fuma + \beta_2Mex + \beta_3Mixed + \beta_4White $$ 
 $$+ \beta_5 \left ( \frac{P-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G-\bar{G}}{\sigma_G}   \right )+ \beta_7 \left ( \frac{N-\bar{N}}{\sigma_N}   \right )$$ \ $$+ \beta_8 \left ( \frac{NG-\bar{NG}}{\sigma_{NG}}   \right ) + \beta_9 \left ( \frac{A-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon $$
 
-$\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e 
-"Nunca/Fumava" (variável Fuma).  
+- $\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).  
+- P, G, N, NG, A: são os valores observados para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente
 
-## Resultados
-
-\begin{center}
-`r legenda_tab5`
-\end{center}
-
+## Ajuste do modelo final
 \begin{table}[!h]
 \centering
 \begin{tabular}{rrrrr}
@@ -719,4 +715,6 @@ As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936.
 
 ##Conclusão
 
-- O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores.
+\begin{block}{Título}
+  O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores.
+\end{block}
