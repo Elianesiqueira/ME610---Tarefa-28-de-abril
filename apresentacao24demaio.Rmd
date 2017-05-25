@@ -10,6 +10,7 @@ header-includes:
  - \usepackage{graphicx,url}
  - \pgfdeclareimage[height= 1.0cm, width=2.5cm]{logo}{logoimeccunicamp.png}
  - \logo{\pgfuseimage{logo}}
+ - \usepackage[normalem]{ulem}
 output: beamer_presentation
 
 ---
@@ -641,9 +642,8 @@ coef4=coefrob_fit4
 
 ##Objetivo
 
-\begin{block}{Título}
+\begin{block}{Verificar a válidade desta opinião:}
 
-O objetivo deste trabalho é verificar a válidade desta opinião:
 
 "O tabagismo parece ser um determinante mais significativo do peso ao nascer do que a altura, o peso da mãe, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê. A redução do peso ao nascer associada ao hábito de fumar parece ser um efeito direto do tabagismo sobre o crescimento fetal."  
 
@@ -652,34 +652,238 @@ O objetivo deste trabalho é verificar a válidade desta opinião:
 
 ## Metodologia
 
-Explicar a metodologia passo a passo em detalhes (pensar em topicos para deixar no slide)
+Explicar a metodologia passo a passo em detalhes (pensar em topicos para deixar no slide);  \pause 
+
+- Padronização das variáveis contínuas;  \pause  
+
+- Regressão linear múltipla com erros padrão robustos;  \pause  
+
+- Inferência com base nos testes de nulidade individuais dos parâmetros do modelo;  \pause   
+
+- Nível de significância $\alpha$ = 10%  
 
 
-##
+## Metodologia
 
-- Regressão liner múltipla com erros padrão robustos;\pause
-- Padronização das variáveis contínuas; \pause
-- Nível de significância $\alpha$ = 10%; \pause
+- Exclusão de variáveis as quais todos os seus níveis foram não significativos; \pause
+
 - Reagrupamento dos níveis não significativos ao nível de referência do modelo; \pause
-- Novo modelo sem as variáveis insignificantes; \pause
 
-##Resultados
-explicar o de mudou em cada modelo
+- Novo modelo sem as variáveis insignificantes;
+
+##Modelos ajustados
+
+
+
+NÃO SEI FAZER SLIDE DE TÍTULO
+
 
 ##Primeiro modelo
+
+**Peso_kg** ~ Fuma + Tempo_sem_fumar + Rendimento_anual + Estado_civil + Educacao_pai + Educacao_mae + Cor_mae + Cor_pai + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + Idade_mae + Altura_mae_cm + Idade_pai
+
+## Variáveis Eliminadas no Primeiro modelo
+
+**Peso_kg** ~ Fuma + ~~Tempo_sem_fumar~~ + ~~Rendimento_anual~~ + ~~Estado_civil~~ + ~~Educacao_pai~~ + ~~Educacao_mae~~ + Cor_mae + Cor_pai + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + ~~Idade_mae~~ + Altura_mae_cm + ~~Idade_pai~~
+
+##Segundo modelo
+
+**Peso_kg** ~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + Altura_mae_cm
+
+\
+
+
+\
+
+(Intercept) : Nunca (Fuma) + Asian (Cor_pai) + Asian (Cor_mae)
 
 
 ##Segundo modelo
 
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
+  FumaFuma & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
+  FumaFumava & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  Cor\_paiBlack & 0.2121 & 0.1166 & 1.82 & 0.0691 \\ 
+  Cor\_paiMex & 0.3512 & 0.1375 & 2.55 & 0.0108 \\ 
+  Cor\_paiMixed & 0.3261 & 0.1042 & 3.13 & 0.0018 \\ 
+  Cor\_paiNão Definido & 0.0603 & 0.2370 & 0.25 & 0.7990 \\ 
+  Cor\_paiWhite & 0.2964 & 0.0710 & 4.17 & 0.0000 \\ 
+  Cor\_maeBlack & -0.1941 & 0.1078 & -1.80 & 0.0721 \\ 
+  Cor\_maeMex & 0.0476 & 0.1149 & 0.41 & 0.6787 \\ 
+  Cor\_maeMixed & -0.0964 & 0.1141 & -0.84 & 0.3983 \\ 
+  Cor\_maeNão Definido & -0.0066 & 0.2010 & -0.03 & 0.9738 \\ 
+  Cor\_maeWhite & -0.0962 & 0.0575 & -1.67 & 0.0945 \\ 
+  \vdots &  \vdots  & \vdots & \vdots & \vdots \\
+  \hline
+\end{tabular}
+\end{table}
+
+## Reagrupamento dos níveis no Segundo modelo
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
+  FumaFuma & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
+  \sout{FumaFumava} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  Cor\_paiBlack & 0.2121 & 0.1166 & 1.82 & 0.0691 \\ 
+  Cor\_paiMex & 0.3512 & 0.1375 & 2.55 & 0.0108 \\ 
+  Cor\_paiMixed & 0.3261 & 0.1042 & 3.13 & 0.0018 \\ 
+  \sout{Cor\_paiNão Definido} & 0.0603 & 0.2370 & 0.25 & 0.7990 \\ 
+  Cor\_paiWhite & 0.2964 & 0.0710 & 4.17 & 0.0000 \\ 
+  Cor\_maeBlack & -0.1941 & 0.1078 & -1.80 & 0.0721 \\ 
+  \sout{Cor\_maeMex} & 0.0476 & 0.1149 & 0.41 & 0.6787 \\ 
+  \sout{Cor\_maeMixed} & -0.0964 & 0.1141 & -0.84 & 0.3983 \\ 
+  \sout{Cor\_maeNão Definido} & -0.0066 & 0.2010 & -0.03 & 0.9738 \\ 
+  Cor\_maeWhite & -0.0962 & 0.0575 & -1.67 & 0.0945 \\ 
+  \vdots &  \vdots  & \vdots & \vdots & \vdots \\
+  \hline
+\end{tabular}
+\end{table}
 
 ##Terceiro modelo
 
+**Peso_kg** ~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + Altura_mae_cm
+
+\
+
+\
+
+(Intercept) : Nunca/Fumava (Fuma) + Asian/Não definido (Cor_pai) + Asian/Mex/Mixed/Não Definido (Cor_mae)
+
+##Terceiro modelo
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3094 & 0.0691 & 47.88 & 0.0000 \\ 
+  FumaFuma & -0.2377 & 0.0283 & -8.40 & 0.0000 \\ 
+  Cor\_paiBlack & 0.1627 & 0.1123 & 1.45 & 0.1477 \\ 
+  Cor\_paiMex & 0.3736 & 0.1109 & 3.37 & 0.0008 \\ 
+  Cor\_paiMixed & 0.2678 & 0.0994 & 2.69 & 0.0072 \\ 
+  Cor\_paiWhite & 0.2711 & 0.0883 & 3.07 & 0.0022 \\ 
+  Cor\_maeBlack & -0.1519 & 0.0914 & -1.66 & 0.0971 \\ 
+  Cor\_maeWhite & -0.0772 & 0.0634 & -1.22 & 0.2238 \\ 
+  Peso\_mae\_kg & 0.0427 & 0.0179 & 2.39 & 0.0171 \\ 
+  Tempo\_gestacao & 0.1975 & 0.0182 & 10.83 & 0.0000 \\ 
+  Data\_nasc & 0.0274 & 0.0133 & 2.07 & 0.0389 \\ 
+  Numero\_gestacoes & 0.0499 & 0.0166 & 3.00 & 0.0027 \\ 
+  Altura\_mae\_cm & 0.0710 & 0.0171 & 4.16 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+##Reagrupamento dos níveis do Terceiro modelo
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3094 & 0.0691 & 47.88 & 0.0000 \\ 
+  FumaFuma & -0.2377 & 0.0283 & -8.40 & 0.0000 \\ 
+  \sout{Cor\_paiBlack} & 0.1627 & 0.1123 & 1.45 & 0.1477 \\ 
+  Cor\_paiMex & 0.3736 & 0.1109 & 3.37 & 0.0008 \\ 
+  Cor\_paiMixed & 0.2678 & 0.0994 & 2.69 & 0.0072 \\ 
+  Cor\_paiWhite & 0.2711 & 0.0883 & 3.07 & 0.0022 \\ 
+  Cor\_maeBlack & -0.1519 & 0.0914 & -1.66 & 0.0971 \\ 
+  \sout{Cor\_maeWhite} & -0.0772 & 0.0634 & -1.22 & 0.2238 \\ 
+  Peso\_mae\_kg & 0.0427 & 0.0179 & 2.39 & 0.0171 \\ 
+  Tempo\_gestacao & 0.1975 & 0.0182 & 10.83 & 0.0000 \\ 
+  Data\_nasc & 0.0274 & 0.0133 & 2.07 & 0.0389 \\ 
+  Numero\_gestacoes & 0.0499 & 0.0166 & 3.00 & 0.0027 \\ 
+  Altura\_mae\_cm & 0.0710 & 0.0171 & 4.16 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+##Quarto Modelo
+**Peso_kg** ~ Fuma + Cor_pai + Cor_mae + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + Altura_mae_cm
+
+\
+
+\
+
+(Intercept) : Nunca/Fumava (Fuma) + Asian/Não definido/Black (Cor_pai) + Asian/Mex/Mixed/Não Definido/white (Cor_mae)
+
+##Quarto Modelo
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3367 & 0.0562 & 59.36 & 0.0000 \\ 
+  FumaFuma & -0.2387 & 0.0280 & -8.52 & 0.0000 \\ 
+  Cor\_paiMex & 0.3306 & 0.1027 & 3.22 & 0.0013 \\ 
+  Cor\_paiMixed & 0.1781 & 0.0795 & 2.24 & 0.0253 \\ 
+  Cor\_paiWhite & 0.1694 & 0.0570 & 2.97 & 0.0030 \\ 
+  Cor\_maeBlack & -0.0197 & 0.0635 & -0.31 & 0.7559 \\ 
+  Peso\_mae\_kg & 0.0434 & 0.0177 & 2.46 & 0.0142 \\ 
+  Tempo\_gestacao & 0.1969 & 0.0182 & 10.83 & 0.0000 \\ 
+  Data\_nasc & 0.0282 & 0.0132 & 2.13 & 0.0333 \\ 
+  Numero\_gestacoes & 0.0499 & 0.0167 & 2.99 & 0.0029 \\ 
+  Altura\_mae\_cm & 0.0706 & 0.0170 & 4.15 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+##Reagrupamento dos níveis do Quarto modelo
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 3.3367 & 0.0562 & 59.36 & 0.0000 \\ 
+  FumaFuma & -0.2387 & 0.0280 & -8.52 & 0.0000 \\ 
+  Cor\_paiMex & 0.3306 & 0.1027 & 3.22 & 0.0013 \\ 
+  Cor\_paiMixed & 0.1781 & 0.0795 & 2.24 & 0.0253 \\ 
+  Cor\_paiWhite & 0.1694 & 0.0570 & 2.97 & 0.0030 \\ 
+  \sout{Cor\_maeBlack} & -0.0197 & 0.0635 & -0.31 & 0.7559 \\ 
+  Peso\_mae\_kg & 0.0434 & 0.0177 & 2.46 & 0.0142 \\ 
+  Tempo\_gestacao & 0.1969 & 0.0182 & 10.83 & 0.0000 \\ 
+  Data\_nasc & 0.0282 & 0.0132 & 2.13 & 0.0333 \\ 
+  Numero\_gestacoes & 0.0499 & 0.0167 & 2.99 & 0.0029 \\ 
+  Altura\_mae\_cm & 0.0706 & 0.0170 & 4.15 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+##Variáveis Eliminadas no Quarto Modelo
+**Peso_kg** ~ Fuma + Cor_pai + ~~Cor_mae~~ + Peso_mae_kg + Tempo_gestacao + Data_nasc + Numero_gestacoes + Altura_mae_cm
+
+\
+
+\
+
+(Intercept) : Nunca/Fumava (Fuma) + Asian/Não definido/Black (Cor_pai)
 
 ##Modelo final
 
-$$Peso = \beta_0 + \beta_1Fuma + \beta_2Mex + \beta_3Mixed + \beta_4White $$ 
-$$+ \beta_5 \left ( \frac{P-\bar{P}}{\sigma_P}   \right )+ \beta_6 \left ( \frac{G-\bar{G}}{\sigma_G}   \right )+ \beta_7 \left ( \frac{N-\bar{N}}{\sigma_N}   \right )$$ \ $$+ \beta_8 \left ( \frac{NG-\bar{NG}}{\sigma_{NG}}   \right ) + \beta_9 \left ( \frac{A-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon $$
-
+$$Peso_i = \beta_0 + \beta_1Fuma_i + \beta_2Mex_i + \beta_3Mixed_i + \beta_4White_i + \beta_5 \left ( \frac{P_i-\bar{P}}{\sigma_P}   \right ) 
+$$
+$$
+ + \beta_6 \left ( \frac{G_i-\bar{G}}{\sigma_G} \right )
++ \beta_7 \left ( \frac{N_i-\bar{N}}{\sigma_N}   \right )+ \beta_8 \left ( \frac{NG_i-\bar{NG}}{\sigma_{NG}}\right ) + \beta_9 \left ( \frac{A_i-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon_i $$
+##
 - $\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).  
 - P, G, N, NG, A: são os valores observados para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente
 
