@@ -1,15 +1,13 @@
 ---
 title: "ME610 - Estatística Aplicada"
-author: "Eliane Siqueira - RA:155233 \\ Guilherme Pazian - RA: 160323"
+author: "Eliane e Guilherme"
 institute: "Universidade Estadual de Campinas"
-date: "12 de maio de 2017"
+date: "26 de maio de 2017"
 header-includes:
- - \usetheme{Boadilla}
+ - \usetheme{CambridgeUS}
  - \usecolortheme{spruce}
  - \usefonttheme{structurebold}
  - \usepackage{graphicx,url}
- - \pgfdeclareimage[height= 1.0cm, width=2.5cm]{logo}{logoimeccunicamp.png}
- - \logo{\pgfuseimage{logo}}
  - \usepackage[normalem]{ulem}
 output: beamer_presentation
 
@@ -642,28 +640,27 @@ coef4=coefrob_fit4
 
 ##Objetivo
 
-\begin{block}{Verificar a válidade desta opinião:}
-
-
-"O tabagismo parece ser um determinante mais significativo do peso ao nascer do que a altura, o peso da mãe, o número de fetos, a renda anual da mãe, o histórico de resultados de gestações anteriores ou o sexo do bebê. A redução do peso ao nascer associada ao hábito de fumar parece ser um efeito direto do tabagismo sobre o crescimento fetal."  
-
+\begin{block}{Primeira pergunta de interesse:}
+  O hábito de fumar influencia no peso do bebê ao nascer?
 \end{block}
 
+\begin{block}{Segunda pergunta de interesse:}
+ O hábito de fumar tem mais influência no peso do bebê ao nascer, do que altura, peso, renda e histórico de gestações da mãe, além de sexo do bebê e número de fetos ?
+\end{block}
 
 ## Metodologia
-
-Explicar a metodologia passo a passo em detalhes (pensar em topicos para deixar no slide);  \pause 
 
 - Padronização das variáveis contínuas;  \pause  
 
+$$\frac{X - E[X]}{\sqrt{Var(X)}}$$ \pause
+
 - Regressão linear múltipla com erros padrão robustos;  \pause  
-
-- Inferência com base nos testes de nulidade individuais dos parâmetros do modelo;  \pause   
-
-- Nível de significância $\alpha$ = 10%  
 
 
 ## Metodologia
+- Inferência com base nos testes de nulidade individuais dos parâmetros do modelo;  \pause   
+
+- Nível de significância $\alpha$ = 10%  
 
 - Exclusão de variáveis as quais todos os seus níveis foram não significativos; \pause
 
@@ -671,11 +668,104 @@ Explicar a metodologia passo a passo em detalhes (pensar em topicos para deixar 
 
 - Novo modelo sem as variáveis insignificantes;
 
+
+##Exemplo 1
+
+- A é uma variável;
+- $A_i$ é o nível i da variável A, i=1,...5.
+- $\beta_0 = \mu_a$
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
+  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.6455 \\ 
+  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.7892 \\ 
+  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.9843 \\ 
+  $A_4$ & -0.0007 & 0.0392 & -0.02 & 0.9854 \\
+  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.6279 \\ 
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0004 \\
+  \hline
+\end{tabular}
+\end{table}
+
+##Exemplo 1
+
+- A é uma variável;
+- $A_i$ é o nível i da variável A, i=1,...5.
+- $\beta_0 = \mu_a$
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
+  \sout{$A_1$} & -0.2381 & 0.0304 & -7.84 & 0.6455 \\ 
+  \sout{$A_2$} & -0.0007 & 0.0392 & -0.02 & 0.7892 \\ 
+  \sout{$A_3$} & -0.0007 & 0.0392 & -0.02 & 0.9843 \\ 
+  \sout{$A_4$} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  \sout{$A_5$} & -0.0007 & 0.0392 & -0.02 & 0.6279 \\ 
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0004 \\
+  \hline
+\end{tabular}
+\end{table}
+
+##Exemplo 2
+- A é uma variável;
+- $A_i$ é o nível i da variável A, i=1,...5.
+- $\beta_0 = \mu_a$
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
+  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
+  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.0002 \\ 
+  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.0000 \\ 
+  $A_4$ & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.0001 \\ 
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0002 \\
+  \hline
+\end{tabular}
+\end{table}
+
+##Exemplo 2
+
+- A é uma variável;
+- $A_i$ é o nível i da variável A, i=1,...5.
+- $\beta_0 = \mu_a$
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
+  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
+  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.0002 \\ 
+  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.0000 \\ 
+  \sout{$A_4$} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.0001 \\ 
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
+  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0002 \\
+  \hline
+\end{tabular}
+\end{table}
+
 ##Modelos ajustados
 
-
-
-NÃO SEI FAZER SLIDE DE TÍTULO
 
 
 ##Primeiro modelo
@@ -883,9 +973,12 @@ $$
 $$
  + \beta_6 \left ( \frac{G_i-\bar{G}}{\sigma_G} \right )
 + \beta_7 \left ( \frac{N_i-\bar{N}}{\sigma_N}   \right )+ \beta_8 \left ( \frac{NG_i-\bar{NG}}{\sigma_{NG}}\right ) + \beta_9 \left ( \frac{A_i-\bar{A}}{\sigma_{A}}   \right ) + \varepsilon_i $$
-##
-- $\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).  
-- P, G, N, NG, A: são os valores observados para as variáveis, "Peso_mae_kg", "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente
+
+
+$\beta_0$: representa o parâmetro associado aos níveis de referência "Asian/Não definido/Black" (variável Cor Pai) e "Nunca/Fumava" (variável Fuma).  
+
+P, G, N, NG, A: são os valores observados para as variáveis, "Peso_mae_kg" "Tempo_gestacao", "Data_nasc", "Numero_gestacoes" e "Altura_mae_cm", respectivamente
+
 
 ## Ajuste do modelo final
 \begin{table}[!h]
@@ -928,12 +1021,20 @@ As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936.
 
 ##Conclusão
 
+\begin{block}
+
 - Diferenciação clara nas características físicas ou de estilo de vida da mãe. 
 
 - As variáveis são intrínsecas à mãe (não estão sujeitas a alterações estipuladas)
 
+\end{block}
+
 ##Conclusão
 
-\begin{block}{Conclusão}
+\begin{block}{Primeira pergunta}
+  O hábito de fumar tem influência no peso da criança ao nascer.
+\end{block}
+
+\begin{block}{Segunda pergunta}
   O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores.
 \end{block}
