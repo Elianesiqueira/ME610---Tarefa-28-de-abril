@@ -632,6 +632,7 @@ coef4=coefrob_fit4
 \begin{enumerate}
   \item Objetivo
   \item Metodologia
+    \item Exemplos
   \item Resultados
   \item Discussão
   \item Conclusão
@@ -669,11 +670,37 @@ $$\frac{X - E[X]}{\sqrt{Var(X)}}$$ \pause
 - Novo modelo sem as variáveis insignificantes;
 
 
-##Exemplo 1
+##Exemplo 1: Modelo
+
+\begin{center}
+$Y_1 = \mu + \alpha_{a_i} + \beta_1x_{1i} + \beta_2x_{2i}+\varepsilon_i$
+\end{center}
 
 - A é uma variável;
 - $A_i$ é o nível i da variável A, i=1,...5.
-- $\beta_0 = \mu_a$
+- $\alpha_{a_1} = 0$ onde $\alpha$ é o incremento na média geral se o indivíduo pertence ao i-ésimo nível da variável A. 
+- $H_{0_i}: \mu_{A_1}= \mu_{A_i}$
+
+##Ajuste do Exemplo 1
+\begin{table}[!h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
+  $A_1$ & -0.0021 & 1.0000 & -0.0021 & >0.10 \\ 
+  $A_2$ & -0.0007 & 1.0000 & -0.0007 & >0.10 \\ 
+  $A_3$ & 0.0086 & 1.0000 & 0.0086 & >0.10 \\ 
+  $A_4$ & -0.0006 & 1.0000 & -0.0006 & >0.10 \\
+  $A_5$ & 0.0008 & 1.0000 & 0.0008 & >0.10 \\ 
+  Contínua & 16.0000 & 1.0000 & 16.0000 & <0.0001 \\
+  Contínua & 17.0000 & 1.0000 & 17.0000 & <0.0004 \\
+  \hline
+\end{tabular}
+\end{table}
+
+##Ajuste do Exemplo 1
 
 \begin{table}[!h]
 \centering
@@ -682,22 +709,30 @@ $$\frac{X - E[X]}{\sqrt{Var(X)}}$$ \pause
  & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
 $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
-  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.6455 \\ 
-  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.7892 \\ 
-  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.9843 \\ 
-  $A_4$ & -0.0007 & 0.0392 & -0.02 & 0.9854 \\
-  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.6279 \\ 
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0004 \\
+  \sout{$A_1$} & \sout{-0.0021} & \sout{1.0000} & \sout{-0.0021} & \sout{>0.10} \\ 
+  \sout{$A_2$} & \sout{-0.0007} & \sout{1.0000} & \sout{-0.0007} & \sout{>0.10} \\ 
+  \sout{$A_3$} & \sout{0.0086} & \sout{1.0000} & \sout{0.0086} & \sout{>0.10} \\ 
+  \sout{$A_4$} & \sout{-0.0006} & \sout{1.0000} & \sout{-0.0006} & \sout{>0.10} \\
+  \sout{$A_5$} & \sout{0.0008} & \sout{1.0000} & \sout{0.0008} & \sout{>0.10} \\ 
+  Contínua & 16.0000 & 1.0000 & 16.0000 & <0.0001 \\
+  Contínua & 17.0000 & 1.0000 & 17.0000 & <0.0004 \\
+  
   \hline
 \end{tabular}
 \end{table}
 
-##Exemplo 1
+##Exemplo 2: Modelo
+
+\begin{center}
+$Y_1 = \mu + \alpha_{a_i} + \beta_1x_{1i} + \beta_2x_{2i}+\varepsilon_i$
+\end{center}
 
 - A é uma variável;
 - $A_i$ é o nível i da variável A, i=1,...5.
-- $\beta_0 = \mu_a$
+- $\alpha_{a_1} = 0$ onde $\alpha$ é o incremento na média geral se o indivíduo pertence ao i-ésimo nível da variável A. 
+- $H_{0_i}: \mu_{A_1}= \mu_{A_i}$
+
+##Ajuste do Exemplo 2
 
 \begin{table}[!h]
 \centering
@@ -706,21 +741,18 @@ $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\
  & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
 $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
-  \sout{$A_1$} & -0.2381 & 0.0304 & -7.84 & 0.6455 \\ 
-  \sout{$A_2$} & -0.0007 & 0.0392 & -0.02 & 0.7892 \\ 
-  \sout{$A_3$} & -0.0007 & 0.0392 & -0.02 & 0.9843 \\ 
-  \sout{$A_4$} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
-  \sout{$A_5$} & -0.0007 & 0.0392 & -0.02 & 0.6279 \\ 
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0004 \\
+  $A_1$ & -0.0021 & 1.0000 & -0.0021 & <0.0001 \\ 
+  $A_2$ & -0.0007 & 1.0000 & -0.0007 & <0.0001 \\ 
+  $A_3$ & 0.0086 & 1.0000 & 0.0086 & >0.10000 \\ 
+  $A_4$ & -0.0006 & 1.0000 & -0.0006 & <0.0001 \\
+  $A_5$ & 0.0008 & 1.0000 & 0.0008 & <0.0001 \\ 
+  Contínua & 16.0000 & 1.0000 & 16.0000 & <0.0001 \\
+  Contínua & 17.0000 & 1.0000 & 17.0000 & <0.0004 \\
   \hline
 \end{tabular}
 \end{table}
 
-##Exemplo 2
-- A é uma variável;
-- $A_i$ é o nível i da variável A, i=1,...5.
-- $\beta_0 = \mu_a$
+##Ajuste de Exemplo 2
 
 \begin{table}[!h]
 \centering
@@ -728,45 +760,23 @@ $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\
   \hline
  & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
-$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
-  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
-  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.0002 \\ 
-  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.0000 \\ 
-  $A_4$ & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
-  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.0001 \\ 
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0002 \\
+$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.2536 \\ 
+  $A_1$ & -0.0021 & 1.0000 & -0.0021 & <0.0001 \\ 
+  $A_2$ & -0.0007 & 1.0000 & -0.0007 & <0.0001 \\ 
+\sout{$A_3$} & \sout{0.0086} & \sout{1.0000} & \sout{0.0086} & \sout{>0.10} \\ 
+  $A_4$ & -0.0006 & 1.0000 & -0.0006 & <0.0001 \\
+  $A_5$ & 0.0008 & 1.0000 & 0.0008 & <0.0001 \\ 
+  Contínua & 16.0000 & 1.0000 & 16.0000 & <0.0001 \\
+  Contínua & 17.0000 & 1.0000 & 17.0000 & <0.0004 \\
   \hline
 \end{tabular}
 \end{table}
 
-##Exemplo 2
+##
 
-- A é uma variável;
-- $A_i$ é o nível i da variável A, i=1,...5.
-- $\beta_0 = \mu_a$
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimativa & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-$\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
-  $A_1$ & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
-  $A_2$ & -0.0007 & 0.0392 & -0.02 & 0.0002 \\ 
-  $A_3$ & -0.0007 & 0.0392 & -0.02 & 0.0000 \\ 
-  \sout{$A_4$} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
-  $A_5$ & -0.0007 & 0.0392 & -0.02 & 0.0001 \\ 
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0001 \\
-  Contínua & -0.0007 & 0.0392 & -0.02 & 0.0002 \\
-  \hline
-\end{tabular}
-\end{table}
-
-##Modelos ajustados
-
-
+\begin{center}
+\huge \bf Modelos ajustados \\[18pt]
+\end{center}
 
 ##Primeiro modelo
 
@@ -824,16 +834,16 @@ $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\
   \hline
 (Intercept) & 3.3030 & 0.0753 & 43.86 & 0.0000 \\ 
   FumaFuma & -0.2381 & 0.0304 & -7.84 & 0.0000 \\ 
-  \sout{FumaFumava} & -0.0007 & 0.0392 & -0.02 & 0.9854 \\ 
+  \sout{FumaFumava} & \sout{-0.0007} & \sout{0.0392} & \sout{-0.02} & \sout{0.9854} \\ 
   Cor\_paiBlack & 0.2121 & 0.1166 & 1.82 & 0.0691 \\ 
   Cor\_paiMex & 0.3512 & 0.1375 & 2.55 & 0.0108 \\ 
   Cor\_paiMixed & 0.3261 & 0.1042 & 3.13 & 0.0018 \\ 
-  \sout{Cor\_paiNão Definido} & 0.0603 & 0.2370 & 0.25 & 0.7990 \\ 
+  \sout{Cor\_paiNão Definido} & \sout{0.0603} & \sout{0.2370} & \sout{0.25} & \sout{0.7990} \\ 
   Cor\_paiWhite & 0.2964 & 0.0710 & 4.17 & 0.0000 \\ 
   Cor\_maeBlack & -0.1941 & 0.1078 & -1.80 & 0.0721 \\ 
-  \sout{Cor\_maeMex} & 0.0476 & 0.1149 & 0.41 & 0.6787 \\ 
-  \sout{Cor\_maeMixed} & -0.0964 & 0.1141 & -0.84 & 0.3983 \\ 
-  \sout{Cor\_maeNão Definido} & -0.0066 & 0.2010 & -0.03 & 0.9738 \\ 
+  \sout{Cor\_maeMex} & \sout{0.0476} & \sout{0.1149} & \sout{0.41} & \sout{0.6787} \\ 
+  \sout{Cor\_maeMixed} & \sout{-0.0964} & \sout{0.1141} & \sout{-0.84} & \sout{0.3983} \\ 
+  \sout{Cor\_maeNão Definido} & \sout{-0.0066} & \sout{0.2010} & \sout{-0.03} & \sout{0.9738} \\ 
   Cor\_maeWhite & -0.0962 & 0.0575 & -1.67 & 0.0945 \\ 
   \vdots &  \vdots  & \vdots & \vdots & \vdots \\
   \hline
@@ -884,12 +894,12 @@ $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\
   \hline
 (Intercept) & 3.3094 & 0.0691 & 47.88 & 0.0000 \\ 
   FumaFuma & -0.2377 & 0.0283 & -8.40 & 0.0000 \\ 
-  \sout{Cor\_paiBlack} & 0.1627 & 0.1123 & 1.45 & 0.1477 \\ 
+  \sout{Cor\_paiBlack} & \sout{0.1627} & \sout{0.1123} & \sout{1.45} & \sout{0.1477} \\ 
   Cor\_paiMex & 0.3736 & 0.1109 & 3.37 & 0.0008 \\ 
   Cor\_paiMixed & 0.2678 & 0.0994 & 2.69 & 0.0072 \\ 
   Cor\_paiWhite & 0.2711 & 0.0883 & 3.07 & 0.0022 \\ 
   Cor\_maeBlack & -0.1519 & 0.0914 & -1.66 & 0.0971 \\ 
-  \sout{Cor\_maeWhite} & -0.0772 & 0.0634 & -1.22 & 0.2238 \\ 
+  \sout{Cor\_maeWhite} & \sout{-0.0772} & \sout{0.0634} & \sout{-1.22} & \sout{0.2238} \\ 
   Peso\_mae\_kg & 0.0427 & 0.0179 & 2.39 & 0.0171 \\ 
   Tempo\_gestacao & 0.1975 & 0.0182 & 10.83 & 0.0000 \\ 
   Data\_nasc & 0.0274 & 0.0133 & 2.07 & 0.0389 \\ 
@@ -946,7 +956,7 @@ $\beta_0$ & 3.3030 & 0.0753 & 43.86 & 0.0000 \\
   Cor\_paiMex & 0.3306 & 0.1027 & 3.22 & 0.0013 \\ 
   Cor\_paiMixed & 0.1781 & 0.0795 & 2.24 & 0.0253 \\ 
   Cor\_paiWhite & 0.1694 & 0.0570 & 2.97 & 0.0030 \\ 
-  \sout{Cor\_maeBlack} & -0.0197 & 0.0635 & -0.31 & 0.7559 \\ 
+  \sout{Cor\_maeBlack} & \sout{-0.0197} & \sout{0.0635} & \sout{-0.31} & \sout{0.7559} \\ 
   Peso\_mae\_kg & 0.0434 & 0.0177 & 2.46 & 0.0142 \\ 
   Tempo\_gestacao & 0.1969 & 0.0182 & 10.83 & 0.0000 \\ 
   Data\_nasc & 0.0282 & 0.0132 & 2.13 & 0.0333 \\ 
@@ -1036,5 +1046,5 @@ As medidas de poder preditivo foram $R^2$ = 0.2997 e $\bar{R}^2$ = 0.2936.
 \end{block}
 
 \begin{block}{Segunda pergunta}
-  O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores.
+  O fato da mãe fumar durante a gravidez parece ser uma variável mais determinante do peso do bebê do que altura, o peso, a renda anual da mãe e o histórico de resultados de gestações anteriores. Não podemos tirar conclusões a partir desses dados, para o sexo do bebê e número de fetos, pois ambas eram constantes no banco de dados disponível.
 \end{block}
